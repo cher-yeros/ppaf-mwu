@@ -1,9 +1,10 @@
 <template>
   <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+    <!--<router-link to="/">Home</router-link> |
+    <router-link to="/about">About</router-link>-->
+    <h1>Our First VUE js application</h1>
   </div>
-  <router-view/>
+  <!--<router-view/>-->
 </template>
 
 <style>
