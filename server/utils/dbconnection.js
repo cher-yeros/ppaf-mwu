@@ -2,7 +2,8 @@ const { Sequelize } = require('sequelize');
 
 const connect = new Sequelize('ppaf', 'root', '', {
     host: 'localhost',
-    dialect: 'mysql'
+    dialect: 'mysql',
+    logging: false
 });
 
 
@@ -11,4 +12,4 @@ connect.authenticate()
 .catch((err)=>console.log("Ther is an error connecting db",err));
 
 
-module.export = connect;
+module.exports = connect;
