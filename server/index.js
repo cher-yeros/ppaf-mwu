@@ -1,9 +1,18 @@
 const express = require('express')
 const app = express()
+app.use(express.json());
  
-app.get('/', function (req, res) {
-  res.send('Hello World')
-})
+const head = require('./routes/head')
+const purchaser = require('./routes/purchaser')
+const staff = require('./routes/staff')
+const storeKeeper = require('./routes/store-keeper')
+
+
+
+app.use('/api/head', head);
+app.use('/api/purchaser', purchaser);
+app.use('/api/staff', staff);
+app.use('/api/store-keeper', storeKeeper);
  
 app.listen(3000)
 

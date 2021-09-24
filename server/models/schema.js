@@ -265,7 +265,3 @@ module.exports.LeaveIssue = LeaveIssue;
 module.exports.PurchaseRequest = PurchaseRequest;
 
 connection.sync({ force: true });
-
-
-
-

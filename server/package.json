@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev" : "nodemon index.js",
-    "migrate" : "node models/schema",
+    "dev": "nodemon index.js",
+    "migrate": "node models/schema",
     "testdb": "node utils/dbconnection",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -14,6 +14,9 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
+    "joi": "^17.4.2",
+    "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.21",
     "mysql2": "^2.3.0",
     "nodemon": "^2.0.12",
     "sequelize": "^6.6.5"
