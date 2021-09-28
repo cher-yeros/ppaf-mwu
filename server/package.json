@@ -7,7 +7,8 @@
     "dev": "nodemon index.js",
     "migrate": "node models/schema",
     "testdb": "node utils/dbconnection",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "seed": "node seeder/seeder"
   },
   "keywords": [],
   "author": "",

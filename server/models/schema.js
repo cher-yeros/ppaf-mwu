@@ -13,7 +13,8 @@ const Property = connection.define('Property', {
     },
     SNO : {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
+        unique: true
     },
     type : {
         type: DataTypes.STRING,
@@ -58,6 +59,18 @@ const Employee = connection.define('Employee', {
     office_no : {
         type: DataTypes.STRING,
         allowNull: false
+    },
+    idno: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: true
+    },
+    password : {
+        type: DataTypes.STRING,
+        allowNull: false,
+        set(value) {
+            this.setDataValue('password', hash(value));
+        }
     }
 });
 
@@ -264,4 +277,4 @@ module.exports.Borrow = Borrow;
 module.exports.LeaveIssue = LeaveIssue;
 module.exports.PurchaseRequest = PurchaseRequest;
 
-connection.sync({ force: true });
+//connection.sync({ force: true });
