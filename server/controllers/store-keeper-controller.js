@@ -29,5 +29,7 @@ module.exports = {
             success: "true",
             response: r
         })
-    }
+    },
+    deleteProperty(req,res) {},
+    updateProperty(req,res) {}
 }

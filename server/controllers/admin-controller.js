@@ -1,6 +1,6 @@
 const Joi = require('joi')
 const { Sequelize }  = require('sequelize')
-const { Property, Employee } = require('../models/schema')
+const { Property, Employee, Role  } = require('../models/schema')
  
 const empschema = Joi.object({
     fullname: Joi.string().required(),
@@ -11,6 +11,12 @@ const empschema = Joi.object({
     idno: Joi.string().required(),
     password: Joi.string().required()
 });
+
+const roleSchema = Joi.object({
+    name : Joi.string().required()
+});
+
+
 
 module.exports = {
     addemployee(req,res){
@@ -23,11 +29,31 @@ module.exports = {
             })
         }
 
-        let e = Employee.create(req.body);
+        let ae = Employee.create(req.body);
 
         res.status(200).send({
             success: "true",
-            response: e
+            response: ae
+        })
+
+    },
+
+
+    addRole(req,res){
+        const result = roleSchema.validate(req.body);
+
+        if (result.error){
+            return res.status(400).send({
+                success: 'false',
+                error:result.error.details[0].message
+            })
+        }
+
+        let ar = Role.create(req.body);
+        
+        res.status(200).send({
+            success: 'true',
+            response: ar
         })
 
     }

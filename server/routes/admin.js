@@ -3,7 +3,7 @@ const router = express.Router();
 const { Department } = require('../models/schema')
 
 const HeadController = require('../controllers/head-controller');
-const storeController = require('../controllers/admin-controller');
+const AdminController = require('../controllers/admin-controller')
 
 router.post('/add-department', (req, res) => {
     const result = Department.create(req.body);
@@ -13,7 +13,8 @@ router.post('/add-department', (req, res) => {
     })
 })
 
-router.post('/add-employee', storeController.addemployee)
+router.post('/add-employee', AdminController.addemployee)
+router.post('/add-role', AdminController.addRole)
 
 //router.get('/confirm', HeadController.confirmRequest);
 

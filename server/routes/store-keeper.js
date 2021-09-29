@@ -8,6 +8,8 @@ router.get('/', (req, res) => {
 })
 
 router.post('/add-property', SKController.addProperty);
+router.delete('/delete-property', SKController.deleteProperty);
+router.put('/update-property', SKController.updateProperty);
 
 
 module.exports = router;
