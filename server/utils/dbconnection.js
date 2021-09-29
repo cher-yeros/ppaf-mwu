@@ -6,7 +6,6 @@ const connect = new Sequelize('ppaf', 'root', '', {
     logging: false
 });
 
-
 connect.authenticate()
 .then(()=> console.log("\nDatabase Connected!\n"))
 .catch((err)=>console.log("Ther is an error connecting db",err));

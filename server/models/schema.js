@@ -67,10 +67,10 @@ const Employee = connection.define('Employee', {
     },
     password : {
         type: DataTypes.STRING,
-        allowNull: false,
-        set(value) {
-            this.setDataValue('password', hash(value));
-        }
+        allowNull: false
+        // set(value) {
+        //     this.setDataValue('password', hash(value));
+        // }
     }
 });
 
@@ -277,4 +277,4 @@ module.exports.Borrow = Borrow;
 module.exports.LeaveIssue = LeaveIssue;
 module.exports.PurchaseRequest = PurchaseRequest;
 
-//connection.sync({ force: true });
+// connection.sync({ force: true });
