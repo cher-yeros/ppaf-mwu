@@ -82,7 +82,12 @@ const Department = connection.define('Department', {
     },
     name : {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
+    },
+    college: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false
+    
     }
 });
 

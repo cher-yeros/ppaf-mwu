@@ -10,6 +10,7 @@ const admin = require('./routes/admin')
 
 
 // add login and register
+
 app.use('/api/head', head);
 app.use('/api/purchaser', purchaser);
 app.use('/api/staff', staff);
