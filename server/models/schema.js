@@ -68,9 +68,9 @@ const Employee = connection.define('Employee', {
     password : {
         type: DataTypes.STRING,
         allowNull: false,
-        set(value) {
-            this.setDataValue('password', hash(value));
-        }
+        //set(value) {
+        //    this.setDataValue('password', hash(value));
+        //}
     }
 });
 
@@ -158,7 +158,7 @@ const PurchaseRequest = connection.define('PurchaseRequest', {
         type: DataTypes.STRING,
         allowNull: false
     },
-    budget_type : {
+    spec : {
         type: DataTypes.STRING,
         allowNull: true
     }
@@ -172,104 +172,123 @@ Employee.hasOne(Department, {
     foreignKey: 'headId'
 });
 
-Department.hasMany(Employee, {
-    as: 'dep',
-    foreignKey: 'depId',
-    constraints: false  
-});
+Employee.belongsTo(Department, {
+    constraints: false,
+    as : 'dep',
+})
 
+Issue.belongsTo(Employee, {
+    as : "employee",
+    foreignKey: 'emp_id'
+})
 
-Employee.hasOne(Issue, {
-    foreignKey: 'emp_id',
-    constraints: false  
-});
-
-Employee.hasOne(Issue, {
+Issue.belongsTo(Employee, {
+    as : 'storeKeeper',
     foreignKey: 'store_keeper_id',
     constraints: false  
-});
+})
 
-Employee.hasOne(Issue, {
+Issue.belongsTo(Employee,  {
+    as : 'head',
     foreignKey: 'head_id',
-    constraints: false  
-});
+    constraints: false 
+})
 
 Property.hasOne(Issue);  //make sure issue has many property
+Issue.belongsTo(Property);
 
-Employee.hasOne(Transfer, { //alternative using as:
+Transfer.belongsTo(Employee, {
+    as : 'from',
     foreignKey: 'from_emp_id',
     constraints: false  
 })
 
-Employee.hasOne(Transfer, { //alternative using as:
+Transfer.belongsTo(Employee, {
+    as : 'to',
     foreignKey: 'to_emp_id',
     constraints: false  
 })
 
-Employee.hasOne(Transfer, { //alternative using as:
+Transfer.belongsTo(Employee, {
+    as : 'storeKeeper',
     foreignKey: 'store_keeper_id',
     constraints: false  
 })
 
 Property.hasOne(Transfer)
+Transfer.belongsTo(Property)
 
-Employee.hasOne(Borrow, {
+Borrow.belongsTo(Employee, {
+    as: 'giver',
     foreignKey: 'borrower_emp_id',
     constraints: false
 })
 
-Employee.hasOne(Borrow, {
+Borrow.belongsTo(Employee, {
+    as: 'taker',
     foreignKey: 'borrowed_to_emp_id',
     constraints: false
 })
 
 Property.hasOne(Borrow)
+Borrow.belongsTo(Property)
 
-Employee.hasOne(Return, {
+Return.belongsTo(Employee, {
+    as: 'storeKeeper',
     foreignKey: 'store_keeper_id',
     constraints: false
 })
 
-Employee.hasOne(Return, {
+Return.belongsTo(Employee, {
+    as: 'employee',
     foreignKey: 'emp_id',
     constraints: false
 })
-
 Property.hasOne(Return)
+Return.belongsTo(Property)
 
-Employee.hasOne(LeaveIssue, {
+LeaveIssue.belongsTo(Employee, {
+    as : 'employee',
     foreignKey: 'emp_id',
     constraints: false
 })
 
-Employee.hasOne(LeaveIssue, {
+LeaveIssue.belongsTo(Employee, {
+    as : 'storeKeeper',
     foreignKey: 'store_keeper_id',
     constraints: false
 })
 
-Employee.hasOne(LeaveIssue, {
+LeaveIssue.belongsTo(Employee, {
+    as : 'purchaser',
     foreignKey: 'purchaser_id',
     constraints: false
 })
 
 Property.hasMany(LeaveIssue)
+LeaveIssue.belongsTo(Property)
 
-Employee.hasOne(PurchaseRequest, {
+PurchaseRequest.belongsTo(Employee, {
+    as: 'employee',
     foreignKey: 'emp_id',
     constraints: false
 })
 
-Employee.hasOne(PurchaseRequest, {
+PurchaseRequest.belongsTo(Employee, {
+    as: 'head',
     foreignKey: 'head_id',
     constraints: false
 })
 
-Employee.hasOne(PurchaseRequest, {
+PurchaseRequest.belongsTo(Employee, {
+    as: 'storeKeeper',
     foreignKey: 'store_keeper_id',
     constraints: false
 })
 
+
 Property.hasOne(PurchaseRequest)
+PurchaseRequest.belongsTo(Property)
 
 module.exports.Employee = Employee;
 module.exports.Role = Role;

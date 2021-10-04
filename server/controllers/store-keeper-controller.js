@@ -1,5 +1,5 @@
 const Joi = require('joi')
-const { Sequelize }  = require('sequelize')
+const { Op }  = require('sequelize')
 const { Property } = require('../models/schema')
 
 const schema = Joi.object({
@@ -8,11 +8,11 @@ const schema = Joi.object({
     type: Joi.string().required(),
     quantity: Joi.number().integer().required(),
     unit: Joi.string().required(),
-    unit_price: Joi.number(),
+    unit_price: Joi.number().required(),
 });
 
 module.exports = {
-    addProperty(req,res) {
+    async addProperty(req,res) {
         const result = schema.validate(req.body);
 
         if(result.error) {
@@ -23,13 +23,63 @@ module.exports = {
         }
 
 
-        let r = Property.create(req.body);
+        let r = await Property.create(req.body);
 
         res.status(200).send({
             success: "true",
             response: r
         })
     },
-    deleteProperty(req,res) {},
-    updateProperty(req,res) {}
+    async getProperty(req,res) {
+        const q = req.query.q;
+        
+        if(q == undefined) {
+            const properties = await Property.findAll();
+
+            res.send({
+                success: true,
+                properties
+            })
+        }
+        else {
+            const properties = await Property.findAll({
+                where: {
+                    name: {
+                      [Op.like] : `%${q}%`
+                    }
+                }
+            })
+
+            res.send({
+                success: true,
+                properties
+            })
+        }
+    },
+    async deleteProperty(req,res) {
+        const result = await Property.destroy({
+            where:{
+                id:req.body.id
+            }
+        });
+        res.status(200).send({
+           success: result
+           
+       })
+   
+    },
+    async updateProperty(req,res) {
+        const result = await Property.update(req.body, {
+             where:{
+                 id:req.body.id
+             }
+         })
+   
+          res.status(200).send({
+              success: result
+           
+       })
+   
+   
+    }
 }

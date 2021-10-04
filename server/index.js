@@ -7,10 +7,10 @@ const purchaser = require('./routes/purchaser')
 const staff = require('./routes/staff')
 const storeKeeper = require('./routes/store-keeper')
 const admin = require('./routes/admin')
+const common = require('./routes/common-route')
 
 
-// add login and register
-
+app.use('/api', common)
 app.use('/api/head', head);
 app.use('/api/purchaser', purchaser);
 app.use('/api/staff', staff);
@@ -19,4 +19,4 @@ app.use('/api/sa',admin)
  
 app.listen(3000)
 
-console.log('Server is listening ')
+console.log('Server is listening to localhost:3000')

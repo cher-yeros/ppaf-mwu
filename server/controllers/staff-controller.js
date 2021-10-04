@@ -1,30 +1,129 @@
 const { reverse } = require('lodash');
-const { Issue } = require('../models/schema')
+const { Op } = require('sequelize');
+const { Issue, Borrow, Return, LeaveIssue, PurchaseRequest, Transfer } = require('../models/schema')
 
 module.exports = {
-    issueProperty(req,res) {
-        Issue.create(req.body);
-
+    async issueProperty(req,res) {
+        const result = await Issue.create(req.body);
+ 
+         res.send({
+             success: true,
+             result
+         })
+    },
+    async borrowProperty(req,res) {
+    const result = await Borrrow.create(req.body);
         res.send({
-            success: true
+        success: true,
+        result
         })
     },
-    borrowProperty(req,res) {
+    async leaveIssue(req,res) {
+        const result = await LeaveIssue.create(req.body);
+        res.send({
+            sucess: true,
+            result
+        })
 
     },
-    leaveIssue(req,res) {
+    async returnProperty(req,res) {
+        const result = await Return.create(req.body);
+        res.send({
+            success: true,
+            result
+        })
 
     },
-    returnProperty(req,res) {
+    async transferProperty(req,res) {
+        const result = await Transfer.create(req.body);
+        res.send({
+            sucess:true,
+            result
+        })
 
     },
-    transferProperty(req,res) {
+    async requestPurchase(req,res) {
+        const result = await Request.create(req.body);
+        res.send({
+            success:true,
+            result
+        })
 
     },
-    requestPurchase(req,res) {
+    async showStatus(req,res) {
+        const issued = await Issue.findAll({
+            where: {
+                emp_id : {
+                    [Op.eq] : req.body.id
+                }
+            }
+        })
 
-    },
-    showStatus(req,res) {
-        
+        const borrowed = await  Borrow.findAll({
+            where: {
+                borrower_emp_id : {
+                    [Op.eq] : req.body.id
+                }
+            }
+        })
+
+        const borrows = await Borrow.findAll({
+            where: {
+                borrowed_to_emp_id : {
+                    [Op.eq] : req.body.id
+                }
+            }
+        })
+
+        const returns = await Return.findAll({
+            where: {
+                emp_id : {
+                    [Op.eq] : req.body.id
+                }
+            }
+        })
+
+        const leavedIssues = await LeaveIssue.findAll({
+            where: {
+                emp_id : {
+                    [Op.eq] : req.body.id
+                }
+            }
+        })
+
+        const requested = await PurchaseRequest.findAll({
+            where: {
+                emp_id : {
+                    [Op.eq] : req.body.id
+                }
+            }
+        })
+
+        const transfers = await Transfer.findAll({
+            where: {
+                from_emp_id : {
+                    [Op.eq] : req.body.id
+                }
+            }
+        })
+
+        const getTransferFrom = await Transfer.findAll({
+            where: {
+                to_emp_id : {
+                    [Op.eq] : req.body.id
+                }
+            }
+        })
+
+        res.send({
+            issued,
+            borrowed,
+            borrows,
+            returns,
+            leavedIssues,
+            requested,
+            transfers,
+            getTransferFrom
+        })
     }
 }
