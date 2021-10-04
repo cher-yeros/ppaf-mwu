@@ -1,85 +1,60 @@
 <template>
-  <v-card
-    class="mx-auto overflow-hidden"
-    height="400"
-    width="344"
-  >
-    <v-system-bar color="deep-purple darken-3"></v-system-bar>
+  <v-toolbar
+  color="blue"
+  dark
+>
+<v-app-bar-nav-icon></v-app-bar-nav-icon>
+<v-toolbar-title class="brand">Spun fInber</v-toolbar-title>
+<v-spacer></v-spacer>
 
-    <v-app-bar
-      color="deep-purple accent-4"
-      dark
-      prominent
-    >
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+<v-toolbar-items>
+  
+  <v-btn class="blue elevation-0 active" text color=white>Manage Property</v-btn>
+  <v-btn class="blue elevation-0 active" text color=white>Manage Employee</v-btn>
+  <v-btn class="blue elevation-0 active" text color=white>Show Transaction</v-btn>
+  <v-btn class="blue elevation-0 active" text color=white>Return</v-btn>
+  <v-btn class="blue elevation-0 active" text color=white>Leave Issue</v-btn>
+</v-toolbar-items>
 
-      <v-toolbar-title>My files</v-toolbar-title>
+      
 
-      <v-spacer></v-spacer>
 
-      <v-btn icon>
-        <v-icon>mdi-magnify</v-icon>
-      </v-btn>
-
-      <v-btn icon>
-        <v-icon>mdi-filter</v-icon>
-      </v-btn>
-
-      <v-btn icon>
-        <v-icon>mdi-dots-vertical</v-icon>
-      </v-btn>
-    </v-app-bar>
-
-    <v-navigation-drawer
-      v-model="drawer"
-      absolute
-      bottom
-      temporary
-    >
-      <v-list
-        nav
-        dense
+    <v-menu offset-y>
+      <template v-slot:activator="{ on, attrs }">
+        <v-avatar>
+      <img
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUz5EWKDu-QHOR3ym0eWBSQenc69_kODInRA&usqp=CAU"
+        alt="Account"
+        v-bind="attrs"
+        v-on="on"
       >
-        <v-list-item-group
-          v-model="group"
-          active-class="deep-purple--text text--accent-4"
-        >
-          <v-list-item>
-            <v-list-item-title>Foo</v-list-item-title>
-          </v-list-item>
-
-          <v-list-item>
-            <v-list-item-title>Bar</v-list-item-title>
-          </v-list-item>
-
-          <v-list-item>
-            <v-list-item-title>Fizz</v-list-item-title>
-          </v-list-item>
-
-          <v-list-item>
-            <v-list-item-title>Buzz</v-list-item-title>
-          </v-list-item>
-        </v-list-item-group>
+    </v-avatar>
+        
+      </template>
+      <v-list>
+        <v-list-item>
+          <v-list-item-title>
+            <v-icon left >account</v-icon>
+            Profile
+          </v-list-item-title>
+        </v-list-item>
+        <v-divider></v-divider>
+        <v-list-item>
+          <v-list-item-title>
+             <v-icon left >logout</v-icon>
+             Logout</v-list-item-title>
+        </v-list-item>
       </v-list>
-    </v-navigation-drawer>
-
-    <v-card-text>
-      The navigation drawer will appear from the bottom on smaller size screens.
-    </v-card-text>
-  </v-card>
+    </v-menu>
+</v-toolbar>
 </template>
 
 <script>
-  export default {
-    data: () => ({
-      drawer: false,
-      group: null,
-    }),
+export default {
 
-    watch: {
-      group () {
-        this.drawer = false
-      },
-    },
-  }
+}
 </script>
+
+<style>
+
+</style>

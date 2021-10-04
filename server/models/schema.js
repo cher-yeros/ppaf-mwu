@@ -111,7 +111,6 @@ const Issue = connection.define('Issue', {
     }
 });
 
-
 const Transfer = connection.define('Transfer', {
     id: {
         type: DataTypes.INTEGER,
