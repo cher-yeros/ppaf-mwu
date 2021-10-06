@@ -9,6 +9,7 @@ router.put('/update-employee', AdminController.updateEmployee)
 router.post('/add-role', AdminController.addRole)
 router.post('/set-role', AdminController.setRole)
 router.get('/get-employees', AdminController.getEmployee)
+router.get('/get-deps', AdminController.getDepartment)
 
 router.get('/get-issues', AdminController.getIssues)
 router.get('/get-transfers', AdminController.getTransfers)

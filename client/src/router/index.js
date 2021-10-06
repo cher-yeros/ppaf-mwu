@@ -5,6 +5,9 @@ import Admin from '../components/admin/Admin.vue';
 import Purchaser from '../components/purchaser/Purchaser.vue';
 import Staff from '../components/staff/Staff.vue';
 import StoreKeeper from '../components/storekeeper/StoreKeeper.vue';
+import Log from '../components/admin/Log.vue';
+import Transaction from '../components/admin/Transcation.vue';
+import Employees from '../components/admin/Employees.vue';
 
 Vue.use(VueRouter)
 
@@ -21,18 +24,33 @@ const routes = [
   },
   {
     path: '/store-keeper',
-    name: 'StoreKeeper',
+    name: 'store-keeper',
     component: StoreKeeper
   },
   {
     path: '/sa',
-    name: 'Admin',
+    name: 'admin',
     component: Admin
   },
   {
     path: '/purchaser',
-    name: 'Purchaser',
+    name: 'purchaser',
     component: Purchaser
+  },
+  {
+    path: '/sa/logs',
+    name: 'logs',
+    component: Log
+  },
+  {
+    path: '/sa/employees',
+    name: 'employees',
+    component: Employees
+  },
+  {
+    path: '/sa/transaction',
+    name: 'transaction',
+    component: Transaction
   },
   
 ]

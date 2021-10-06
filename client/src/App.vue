@@ -16,3 +16,10 @@ export default {
   }),
 };
 </script>
+
+<style scoped>
+a {
+  color: white !important;
+  text-decoration: none !important;
+}
+</style>

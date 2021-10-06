@@ -1,57 +1,57 @@
 <template>
-  <v-toolbar
-  color="blue"
-  dark
->
-<v-app-bar-nav-icon></v-app-bar-nav-icon>
-<v-toolbar-title class="brand">Spun fInber</v-toolbar-title>
-<v-spacer></v-spacer>
+<div>
+  <app-bar ></app-bar>
+  <v-main >
+    <v-container>
+      <v-row>
+        <v-col cols="12" sm="4" md="3">
+          <v-card elevation="5" >
+            <v-list-item>
+              <v-list-item-avatar tile class="mt-n10">
+                <v-sheet
+                  color="success"
+                  elevation="10"
+                  height="120"
+                  outlined
+                  rounded
+                  width="120"
+                > <v-icon dark large>JK</v-icon> </v-sheet>
+              </v-list-item-avatar>
+              <v-list-item-content>
+                <div class="text-right">Employee</div>
+                <v-list-item-title class="headline mb-1 text-right">2,021</v-list-item-title>
+                <div><v-divider></v-divider></div>
+              </v-list-item-content>
+              <v-card-actions>
+                <div class="overline">Iyad</div>
+              </v-card-actions>
+            </v-list-item>
+          </v-card>
+        </v-col>
 
-<v-toolbar-items>
-  
-  <v-btn class="blue elevation-0 active" text color=white>Manage Property</v-btn>
-  <v-btn class="blue elevation-0 active" text color=white>Manage Employee</v-btn>
-  <v-btn class="blue elevation-0 active" text color=white>Show Transaction</v-btn>
-  <v-btn class="blue elevation-0 active" text color=white>Return</v-btn>
-  <v-btn class="blue elevation-0 active" text color=white>Leave Issue</v-btn>
-</v-toolbar-items>
+        <v-col cols="12" sm="4" md="3">
+          adfg
+        </v-col>
 
-      
+        <v-col cols="12" sm="4" md="3">
+          adfg
+        </v-col>
 
-
-    <v-menu offset-y>
-      <template v-slot:activator="{ on, attrs }">
-        <v-avatar>
-      <img
-        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUz5EWKDu-QHOR3ym0eWBSQenc69_kODInRA&usqp=CAU"
-        alt="Account"
-        v-bind="attrs"
-        v-on="on"
-      >
-    </v-avatar>
-        
-      </template>
-      <v-list>
-        <v-list-item>
-          <v-list-item-title>
-            <v-icon left >account</v-icon>
-            Profile
-          </v-list-item-title>
-        </v-list-item>
-        <v-divider></v-divider>
-        <v-list-item>
-          <v-list-item-title>
-             <v-icon left >logout</v-icon>
-             Logout</v-list-item-title>
-        </v-list-item>
-      </v-list>
-    </v-menu>
-</v-toolbar>
+        <v-col cols="12" sm="4" md="3">
+          adfg
+        </v-col>
+      </v-row>
+    </v-container>
+  </v-main>
+</div>
 </template>
 
 <script>
-export default {
+import AppBar from './AppBar';
 
+export default {
+  component: { AppBar },
+  
 }
 </script>
 

@@ -20,7 +20,9 @@ const empschema = Joi.object({
     office_no: Joi.string().required(),
     idno: Joi.string().required(),
     password: Joi.string().required(),
-    depId: Joi.number().integer()
+    depId: Joi.number().integer(),
+    email: Joi.string().required(),
+    avatar: Joi.string()
 });
 
 const roleSchema = Joi.object({
@@ -159,6 +161,12 @@ module.exports = {
 
         res.send({
             success: result
+        })
+    },
+    async getDepartment(req,res) {
+        const result = await Department.findAll();
+        res.send({
+            result
         })
     },
     async getIssues(req,res) {
