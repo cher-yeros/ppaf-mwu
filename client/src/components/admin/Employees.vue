@@ -1,6 +1,6 @@
 <template>
 <div>
-  <app-bar></app-bar>
+  <a-app-bar></a-app-bar>
   <v-container>
     <v-data-table :headers="headers" :items="employees" sort-by="fullname" class="pa-2 elevation-1" >
     <template v-slot:top>
@@ -39,17 +39,19 @@
     </template>
     
     <template v-slot:item.actions="{ item }">
-      <v-btn class="mr-1" @click="editItem(item)" color="success">
+      <v-btn-toggle>
+        <v-btn small class="" @click="editItem(item)" color="success">
         <v-icon left >
           mdi-pencil
         </v-icon> Edit
       </v-btn>
 
-      <v-btn class="ml-1" @click="deleteItem(item)" color="error">
-        <v-icon left >
+      <v-btn small class="" @click="deleteItem(item)" color="error">
+        <v-icon dark left >
           mdi-delete
         </v-icon> Delete
       </v-btn>
+      </v-btn-toggle>
     </template>
 
     <template v-slot:no-data>

@@ -1,9 +1,9 @@
 <template>
 <div>
-  <a-app-bar></a-app-bar>
-  <div class="main" app>
-    Department
-  </div>
+   <sk-app-bar ></sk-app-bar>
+   <v-main >
+    A and G homepage
+   </v-main>
 </div>
 </template>
 

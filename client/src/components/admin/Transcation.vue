@@ -1,6 +1,6 @@
 <template>
 <div>
-  <app-bar></app-bar>
+  <a-app-bar></a-app-bar>
   <div class="main" app>
     transactions list
   </div>

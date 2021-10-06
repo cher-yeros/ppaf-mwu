@@ -1,6 +1,6 @@
 <template>
 <div>
-  <app-bar ></app-bar>
+  <a-app-bar ></a-app-bar>
   <v-main >
     <v-container>
       <v-row>
