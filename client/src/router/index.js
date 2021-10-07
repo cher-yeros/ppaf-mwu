@@ -106,12 +106,6 @@ const routes = [
      name:'Show_status',
      component: Show_Status
   },
-
-  {
-    path: '/s/staff',
-    name: 'Staff',
-    component: Staff
-  },
   {
     path: '/s/store-keeper',
     name: 'StoreKeeper',

@@ -54,7 +54,11 @@ export default {
 </script>
 
 <style scoped>
-  button {
+a {
+  color: white !important;
+  text-decoration: none !important;
+}
+button {
   height: 64px !important;
 }
 </style>

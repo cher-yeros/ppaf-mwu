@@ -44,8 +44,13 @@ module.exports = {
         else {
             const properties = await Property.findAll({
                 where: {
-                    name: {
-                      [Op.like] : `%${q}%`
+                    [Op.or] : {
+                        name: {
+                            [Op.like] : `%${q}%`
+                        },
+                        SNO: {
+                            [Op.like] : `%${q}%`
+                        }
                     }
                 }
             })
@@ -62,23 +67,25 @@ module.exports = {
                 id:req.body.id
             }
         });
-        res.status(200).send({
+        res.send({
            success: result
            
        })
    
     },
     async updateProperty(req,res) {
+        const id = req.body.id;
+        delete req.body.id;
+
         const result = await Property.update(req.body, {
              where:{
-                 id:req.body.id
+                 id:id
              }
-         })
+        })
    
-          res.status(200).send({
-              success: result
-           
-       })
+        res.send({
+            success: result
+        })
    
    
     }

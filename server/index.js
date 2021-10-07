@@ -3,8 +3,10 @@ const app = express()
 app.use(express.json());
 
 app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "http://192.168.137.74:8080");
+    res.header("Access-Control-Allow-Origin", "http://localhost:8081");
     res.header("Access-Control-Allow-Methods", "POST"); // update to match the domain you will make the request from
+    res.header("Access-Control-Allow-Methods", "PUT"); // update to match the domain you will make the request from
+    res.header("Access-Control-Allow-Methods", "DELETE"); // update to match the domain you will make the request from
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
 });
@@ -17,13 +19,13 @@ const admin = require('./routes/admin')
 const common = require('./routes/common-route')
 
 
-app.use('/api', common)
+app.use('/api', common);
 app.use('/api/head', head);
 app.use('/api/purchaser', purchaser);
 app.use('/api/staff', staff);
 app.use('/api/store-keeper', storeKeeper);
-app.use('/api/sa',admin)
+app.use('/api/sa',admin);
  
 app.listen(3000)
 
-console.log('Server is listening to localhost:3000')
+console.log('Server is listening to localhost : 3000')

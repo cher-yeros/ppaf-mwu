@@ -62,7 +62,7 @@
   </v-data-table>
 
   </v-container>
-<emp-form :record="itemSelected" @closed="dialogForm = false" v-if="dialogForm"></emp-form>
+<emp-form :isAdd="isAdd" :record="itemSelected" @closed="dialogForm = false; isAdd=true" v-if="dialogForm"></emp-form>
 <!--<emp-form :record="itemSelected" @closed="dialogForm = false" v-if="dialogForm"></emp-form>-->
 </div>
 </template>
@@ -88,7 +88,8 @@ export default {
             { text: 'Actions', value: 'actions', sortable: false },
           ],
           employees: [],
-          itemSelected : {}
+          itemSelected : {},
+          isAdd: true
       }
   },
   methods: {
@@ -96,6 +97,7 @@ export default {
           this.showPropForm = true
       },
       editItem (item) {
+        this.isAdd = false
         this.itemSelected = item;
         this.dialogForm = true;
       },

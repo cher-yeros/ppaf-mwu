@@ -7,8 +7,13 @@
     >
       
       <v-card>
-        <v-card-title class="white--text text-h5 blue lighten-2">
-          Add Employee
+        <v-card-title class="white--text text-h5 blue lighten-2" >
+          <span v-text="isAdd?'Add Employee': 'Edit Employee'"></span>
+          <v-spacer></v-spacer>
+          <v-btn color="error" @click="emitEvent">
+            <v-icon left>mdi-close</v-icon>
+            Close
+          </v-btn>
         </v-card-title>
         <v-card-text>
           <v-container>
@@ -45,12 +50,12 @@
               </v-col>
 
               <v-col class="rapper" cols="12" sm="12" md="6">
-                <!--<v-file-input v-model="record.sign" @change="signSelected" prepend-icon="mdi-signature-freehand" truncate-length="27" label="Sign" required></v-file-input>-->
-                <v-text-field @change="signSelected" type="file" label="Sign" required hint="" ></v-text-field>
+                <v-file-input  @change="signSelected" prepend-icon="mdi-signature-freehand" truncate-length="27" label="Sign" required></v-file-input>
+                <!--<v-text-field @change="signSelected" type="file" label="Sign" required hint="" ></v-text-field>-->
               </v-col>
 
               <v-col class="rapper" cols="12" sm="12" md="6">
-                <v-file-input v-model="record.avatar" prepend-icon="mdi-account" truncate-length="27" label="Profile Picture" required></v-file-input>
+                <v-file-input  prepend-icon="mdi-account" truncate-length="27" label="Profile Picture" required></v-file-input>
               </v-col>
 
             </v-row>
@@ -60,21 +65,21 @@
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn small color="error" @click="emitEvent">
-            <v-icon left>mdi-close</v-icon>
-            Close
-          </v-btn>
-          <v-btn @click="submitForm"  color="success" >
+          <v-btn @click="submitForm"  color="primary" v-if="isAdd">
           <v-icon left>mdi-plus</v-icon>
             Save
+          </v-btn>
+          <v-btn @click="updateForm"  color="success" v-if="!isAdd">
+          <v-icon left>mdi-plus</v-icon>
+            Update
           </v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
 
-    <v-alert v-if="alert" dismissible prominent type="success">
-      Successfully Added
-    </v-alert>
+    
+    <alert :d="d" v-if="alert"></alert>
+
   </v-row>
 </template>
 
@@ -82,14 +87,16 @@
 <script>
 const axios = require('axios');
   export default {
-    props:['record'],
+    props:['record','isAdd'],
     data: () => ({
       dialog: true,
       deps : [],
-      alert: false
+      alert: false,
+      d: {}
     }),
     methods : {
       emitEvent() {
+        this.record = {}
         this.$emit('closed')
       },
       signSelected(e) {
@@ -108,22 +115,37 @@ const axios = require('axios');
         this.record.avatar = "https://www.google.com/imgres?imgurl=https%3A%2F%2Fdata.whicdn.com%2Fimages%2F302058504%2Foriginal.jpg%3Ft%3D1511579073&imgrefurl=https%3A%2F%2Fweheartit.com%2Farticles%2F302058504-profile-pictures-girls&tbnid=4izHLjAAooe2hM&vet=12ahUKEwiy26XxrLXzAhWS8IUKHVVYCiUQMygEegUIARDUAQ..i&docid=kyF2Vmx4CIqAhM&w=500&h=496&q=girl%20profile%20picture&hl=en&ved=2ahUKEwiy26XxrLXzAhWS8IUKHVVYCiUQMygEegUIARDUAQ";
         var url = "http://localhost:3000/api/sa/add-employee";
         
-
-        console.log(this.record)
         try {
-          var result = await axios.post(url, this.record);
-          if(result.data.success) {
+          var response = await axios.post(url, this.record);
+          
+          if(response.data.success) {
+            this.d = {
+              type: "success",
+              msg: "Successfull Added"
+            }
             this.alert = true
             this.dialog = false
           }
         } catch (error) {
-          console.error("ERror"+error.response.data);
+          console.error("ERror---->"+error);
         }
         
+      },
+      async updateForm() {
+
+      }
+    },
+    watch: {
+      isAdd(value) {
+        if(value) {
+          this.record = {}
+        }
       }
     },
     mounted() {
-      console.log(this.record)
+      if(this.isAdd) {
+          this.record = {}
+        }
       
     },
     created() {

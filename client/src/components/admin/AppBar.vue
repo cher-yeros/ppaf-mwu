@@ -14,7 +14,7 @@
 
 <v-toolbar-items>
   
-  <router-link to="/sa/properties">
+  <router-link to="/sa/logs">
     <v-btn class="button blue elevation-0 active" text color=white>Log</v-btn>
   </router-link>
   <router-link to="/sa/employees">
