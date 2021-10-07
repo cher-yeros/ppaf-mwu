@@ -9,6 +9,9 @@
          <v-spacer></v-spacer>
          
       <v-toolbar-items>
+      <router-link to="/s/Show_status">
+        <v-btn class="button blue elevation-0 active" text color=white>Show Status</v-btn>
+      </router-link>
         <v-menu offset-y>
       <template v-slot:activator="{ on, attrs }">
         <v-btn 
@@ -16,35 +19,31 @@
           v-bind="attrs"
           v-on="on"
         >
-           Property Transaction
+           Transaction
         </v-btn>
       </template>
       <v-list>
-        <router-link to="/s/Issue"> 
-          <v-list-item>
+        <!--<router-link to="/s/Issue"> -->
+          <v-list-item @click="issueD = true">
             <v-list-item-title>Issue property</v-list-item-title>
           </v-list-item>
-        </router-link>
-        <router-link to="/s/Borrow"> 
-          <v-list-item>
+        <!--</router-link>-->
+        <!--<router-link to="/s/Borrow"> -->
+          <v-list-item @click="borrowD = true">
             <v-list-item-title>Borrow property</v-list-item-title>
           </v-list-item>
         </router-link>
-       <router-link to="/s/Transfer"> 
-           <v-list-item>
+       <!--<router-link to="/s/Transfer"> -->
+           <v-list-item @click="transferD = true">
             <v-list-item-title>Transfer property</v-list-item-title>
           </v-list-item> 
-        </router-link>
-      <router-link to="/s/Leave_Issue"> 
-        <v-list-item>
+        <!--</router-link>-->
+      <!--<router-link to="/s/Leave_Issue"> -->
+        <v-list-item @click="lissueD = true">
           <v-list-item-title>Leave Issue</v-list-item-title>
         </v-list-item> 
-      </router-link>
-      <router-link to="/s/Show_status"> 
-        <v-list-item>
-          <v-list-item-title>Show status</v-list-item-title>
-        </v-list-item> 
-      </router-link>
+      <!--</router-link>-->
+      
 
       </v-list>
     </v-menu>
@@ -57,12 +56,11 @@
       
       
       </v-toolbar-items>
-      <v-spacer></v-spacer>
+      <!--<v-spacer></v-spacer>-->
      <v-menu offset-y>
      
   <template v-slot:activator="{ on, attrs }">
    
-   <v-spacer></v-spacer>
     <v-avatar>
     
   <img
@@ -77,29 +75,244 @@
   <v-list>
     <v-list-item>
       <v-list-item-title>
-        <v-icon left >account</v-icon>
+        <v-icon left >mdi-account</v-icon>
         Profile
       </v-list-item-title>
     </v-list-item>
     <v-divider></v-divider>
     <v-list-item>
       <v-list-item-title>
-          <v-icon left >logout</v-icon>
+          <v-icon left >mdi-logout</v-icon>
           Logout</v-list-item-title>
     </v-list-item>
   </v-list>
 </v-menu>
 
 
+
+    <v-dialog
+      v-model="issueD"
+      persistent
+      max-width="600px"
+    >
+      
+      <v-card>
+        <v-card-title class="white--text text-h5 blue lighten-2">
+          Issue Form
+          <v-spacer></v-spacer>
+            <v-btn color="error" @click="issueD = false">
+              <v-icon left>mdi-close</v-icon>
+            </v-btn>
+        </v-card-title>
+
+        <v-card-text>
+          <v-container>
+            <v-row>
+              <v-col cols="12" sm="12" md="6">
+                <v-autocomplete v-model="issue.PropertyId" :items="props" item-text="name" item-value="id" label="property" required></v-autocomplete>
+                <!--<v-select :items="props" item-text="name" item-value="id" label="property" required ></v-select>-->
+              </v-col>
+
+              <v-col cols="12" sm="12" md="6">
+                <v-text-field v-model="issue.quantity" label="Quantity*" required hint="12" type='number' min=1></v-text-field>
+              </v-col>
+            </v-row>
+          </v-container>
+
+          <small class="red--text">*indicates required field</small>
+        </v-card-text>
+
+        <v-card-actions>
+          <v-spacer></v-spacer>
+        
+          <v-btn @click="performIssue" color="success" >
+          <v-icon left>mdi-plus</v-icon>
+            Issue
+          </v-btn>
+        </v-card-actions>
+
+      </v-card>
+    </v-dialog>
+
+    <v-dialog
+      v-model="borrowD"
+      persistent
+      max-width="600px"
+    >
+      
+      <v-card>
+        <v-card-title class="white--text text-h5 blue lighten-2">
+          borrow Form
+        </v-card-title>
+        <v-card-text>
+          <v-container>
+            <v-row>
+            
+
+              <v-col cols="12" sm="12" md="6">
+                <v-select :items="['kjkhg','jjjj','jddas']" label="property" required ></v-select>
+              </v-col>
+               <v-col cols="12" sm="12" md="6">
+                <v-select :items="['kjkhg','jjjj','jddas']" label="Employe to be borroed" required ></v-select>
+              </v-col>
+
+              
+            </v-row>
+          </v-container>
+
+          <small class="red--text">*indicates required field</small>
+        </v-card-text>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn color="warning" @click="borrowD = false">
+            <v-icon left>mdi-close</v-icon>
+            Close
+          </v-btn>
+          <v-btn color="success" >
+          <v-icon left>mdi-plus</v-icon>
+            send
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+
+
+    <v-dialog
+      v-model="lissueD"
+      persistent
+      max-width="600px"
+    >
+      
+      <v-card>
+        <v-card-title class="white--text text-h5 blue lighten-2">
+          leave Issue Form
+        </v-card-title>
+        <v-card-text>
+          <v-container>
+            <v-row>
+            
+
+              <v-col cols="12" sm="12" md="6">
+                <v-select :items="['kjkhg','jjjj','jddas']" label="property" required ></v-select>
+              </v-col>
+
+              <v-col cols="12" sm="12" md="6">
+                <v-text-field label="Destination" required hint="Balerobe" type='text' ></v-text-field>
+              </v-col>
+
+            </v-row>
+          </v-container>
+
+          <small class="red--text">*indicates required field</small>
+        </v-card-text>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn color="warning" @click="lissueD = false">
+            <v-icon left>mdi-close</v-icon>
+            Close
+          </v-btn>
+          <v-btn color="success" >
+          <v-icon left>mdi-plus</v-icon>
+            send
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+
+     <v-dialog
+      v-model="transferD"
+      persistent
+      max-width="600px"
+    >
+      
+      <v-card>
+        <v-card-title class="white--text text-h5 blue lighten-2">
+          transfer Form
+        </v-card-title>
+        <v-card-text>
+          <v-container>
+            <v-row>
+            
+
+              <v-col cols="12" sm="12" md="6">
+                <v-select :items="['kjkhg','jjjj','jddas']" label="property" required ></v-select>
+              </v-col>
+               <v-col cols="12" sm="12" md="6">
+                <v-select :items="['kjkhg','jjjj','jddas']" label="Employe to be borroed" required ></v-select>
+              </v-col>
+
+              
+            </v-row>
+          </v-container>
+
+          <small class="red--text">*indicates required field</small>
+        </v-card-text>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn color="warning" @click="transferD = false">
+            <v-icon left>mdi-close</v-icon>
+            Close
+          </v-btn>
+          <v-btn color="success" >
+          <v-icon left>mdi-plus</v-icon>
+            send
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
     </v-toolbar>
 </template>
 
 <script>
+const axios = require('axios');
 export default {
+  data() {
+    return {
+      props: [],
+      issueD: false,
+      borrowD: false,
+      lissueD: false,
+      transferD: false,
+      issue: {}
+    }
+  },
+  methods: {
+    async fetchData() {
+      let url = "http://localhost:3000/api/store-keeper/get-property"
 
+      let response = await axios.get(url);
+
+      if(response.data.success) {
+        this.props = response.data.properties
+      }
+
+      console.log(this.props)
+    },
+    performIssue() {
+      this.issue.emp_id = 12
+      console.log(this.issue)
+
+      let q = this.props.find(x => x.id === this.issue.PropertyId).quantity;
+      if(this.issue.quantity > q){
+        console.log("Not available Ammount")
+        return
+      }
+
+
+    }
+  },
+  created() {
+    this.fetchData()
+  }
 }
 </script>
 
 <style scoped>
-
+a {
+  color: white !important;
+  text-decoration: none !important;
+}
+.button {
+  height: 64px !important;
+}
 </style>

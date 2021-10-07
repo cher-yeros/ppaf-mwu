@@ -228,7 +228,6 @@ const axios = require('axios');
           this.initialize()
       }
     },
-
     created () {
       this.initialize()
     },
@@ -251,7 +250,6 @@ const axios = require('axios');
       },
 
       deleteItem (item) {
-        
         this.editedIndex = this.properties.indexOf(item)
         this.editedItem = Object.assign({}, item)
         this.dialogDelete = true

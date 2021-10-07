@@ -153,6 +153,9 @@ data() {
 </script>
 
 <style scoped>
+.router-link-exact-active ,.router-link-active {
+  background: blue !important;
+}
 a {
   color: white !important;
   text-decoration: none !important;

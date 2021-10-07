@@ -34,7 +34,11 @@ module.exports = {
         const q = req.query.q;
         
         if(q == undefined) {
-            const properties = await Property.findAll();
+            const properties = await Property.findAll({
+                order: [
+                    ['name', 'ASC']
+                ]
+            });
 
             res.send({
                 success: true,
@@ -52,7 +56,10 @@ module.exports = {
                             [Op.like] : `%${q}%`
                         }
                     }
-                }
+                },
+                order: [
+                    ['name', 'ASC']
+                ]
             })
 
             res.send({

@@ -109,6 +109,8 @@ const axios = require('axios');
         let response = await axios.get(url);
 
         this.deps = response.data.result
+
+        console.log(this.deps)
       },
       async submitForm() {
         this.record.sign = "https://toppng.com/uploads/preview/signature-png-115539501081nmjnfovlk.png";
