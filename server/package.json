@@ -8,7 +8,7 @@
     "migrate": "node models/schema",
     "testdb": "node utils/dbconnection",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "seed": "node seeder/seeder"
+    "seed": "node seeder/eg"
   },
   "keywords": [],
   "author": "",

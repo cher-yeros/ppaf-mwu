@@ -20,6 +20,9 @@
   <router-link to="/sa/employees">
     <v-btn class="button blue elevation-0 active" text color=white>Employees</v-btn>
   </router-link>
+  <router-link to="/sa/deps">
+    <v-btn class="button blue elevation-0 active" text color=white>Departments</v-btn>
+  </router-link>
   <router-link to="/sa/transaction">
     <v-btn class="button blue elevation-0 active" text color=white>Transaction</v-btn>
   </router-link>

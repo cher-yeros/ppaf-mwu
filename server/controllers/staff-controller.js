@@ -1,13 +1,21 @@
 const { reverse } = require('lodash');
 const { Op } = require('sequelize');
-const { Issue, Borrow, Return, LeaveIssue, PurchaseRequest, Transfer } = require('../models/schema')
+const { Issue, Borrow, Return, LeaveIssue, PurchaseRequest, Transfer, Property } = require('../models/schema')
 
 module.exports = {
     async issueProperty(req,res) {
+        
         const result = await Issue.create(req.body);
- 
-         res.send({
-             success: true,
+        
+
+         const r = result.getProperty()
+
+         let id = req.body.PropertyId;
+         let quantity = req.body.quantity;
+         let k = Property.decrement('quantity', {by : quantity , where: { id:id }})
+
+         res.status(200).send({
+             k,
              result
          })
     },

@@ -14,7 +14,7 @@
         
         <v-spacer></v-spacer>
 
-        <v-btn @click="dialogForm = true" color="success" dark class="mb-2" >
+        <v-btn @click="itemSelected = {} ;dialogForm = true" color="success" dark class="mb-2" >
           <v-icon left> mdi-plus </v-icon>
               Add
         </v-btn>
@@ -34,19 +34,19 @@
       </v-toolbar>
     </template>
 
-    <template v-slot:item.dep="{ item }">
-      {{ item.dep.name }}
+    <template v-slot:item.dep="{ item }" v-text="">
+      {{item.dep}}
     </template>
     
     <template v-slot:item.actions="{ item }">
       <v-btn-toggle>
-        <v-btn small class="" @click="editItem(item)" color="success">
+        <v-btn class="" @click="editItem(item)" color="success">
         <v-icon left >
           mdi-pencil
         </v-icon> Edit
       </v-btn>
 
-      <v-btn small class="" @click="deleteItem(item)" color="error">
+      <v-btn class="" @click="deleteItem(item)" color="error">
         <v-icon dark left >
           mdi-delete
         </v-icon> Delete
@@ -113,17 +113,26 @@ export default {
       },
       async initialize() {
         var url = "http://localhost:3000/api/sa/get-employees";
-        let response = await axios.get(url);
-        this.employees = response.data.employees
+
+        try {
+          let response = await axios.get(url);
+          this.employees = response.data.employees
+        } catch (error) {
+          console.log(error);
+        }
+
         
-        //.catch(function (error) {
-        //  // handle error
-        //  console.log(error);
-        //})
-        //.then(function () {
-        //  // always executed
-        //});
-      }
+        
+      },
+      dep(e) {
+        //console.log(e.dep.name)
+        let f = JSON.parse(JSON.stringify(e.dep))
+        //console.log(f.name);
+      return f
+    }
+  },
+  computed: {
+    
   },
   created() {
     this.initialize()

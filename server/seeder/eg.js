@@ -279,7 +279,8 @@ for (let i = 0; i < 50; i++) {
         emp_id: faker.datatype.number({min:1,max:300}),
         head_id:faker.datatype.number({min:1,max:300}),
         store_keeper_id:faker.datatype.number({min:1,max:300}),
-        PropertyId: faker.datatype.number({min:1,max:500})
+        PropertyId: faker.datatype.number({min:1,max:500}),
+        quantity: faker.datatype.number(75),
     }
     issues.push(is)
 }
@@ -295,7 +296,8 @@ for (let i = 0; i < 50; i++) {
         from_emp_id: faker.datatype.number({min:1,max:300}),
         to_emp_id:faker.datatype.number({min:1,max:300}),
         store_keeper_id:faker.datatype.number({min:1,max:300}),
-        PropertyId: faker.datatype.number({min:1,max:500})
+        PropertyId: faker.datatype.number({min:1,max:500}),
+        quantity: faker.datatype.number(75),
     }
     transfers.push(tr)
 }
@@ -311,7 +313,8 @@ for (let i = 0; i < 50; i++) {
     var brw = {
         borrower_emp_id: faker.datatype.number({min:1,max:300}),
         borrowed_to_emp_id:faker.datatype.number({min:1,max:300}),
-        PropertyId: faker.datatype.number({min:1,max:500})
+        PropertyId: faker.datatype.number({min:1,max:500}),
+        quantity: faker.datatype.number(75),
     }
     borrows.push(brw)    
 }
@@ -326,7 +329,8 @@ for (let i = 0; i < 50; i++) {
     var rt = {
         store_keeper_id: faker.datatype.number({min:1,max:300}),
         emp_id:faker.datatype.number({min:1,max:300}),
-        PropertyId: faker.datatype.number({min:1,max:500})
+        PropertyId: faker.datatype.number({min:1,max:500}),
+        quantity: faker.datatype.number(75),
     }
 
     returns.push(rt)
@@ -346,7 +350,8 @@ for (let i = 0; i < 50; i++) {
             head_id:faker.datatype.number({min:1,max:300}),
             PropertyId: faker.datatype.number({min:1,max:500}),
             budget_type: faker.helpers.randomize(["bt1","bt2","bt3","bt4","bt5"]),
-            spec: faker.commerce.productDescription()
+            spec: faker.commerce.productDescription(),
+            quantity: faker.datatype.number(75),
         }
     requests.push(rq)
 }
@@ -363,7 +368,8 @@ for (let i = 0; i < 50; i++) {
         store_keeper_id:faker.datatype.number({min:1,max:300}),
         purchaser_id:faker.datatype.number({min:1,max:300}),
         PropertyId: faker.datatype.number({min:1,max:300}),
-        destination: faker.address.streetName()
+        destination: faker.address.streetName(),
+        quantity: faker.datatype.number(75),
     }
 
     leaveIssues.push(lv)

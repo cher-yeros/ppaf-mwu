@@ -32,7 +32,7 @@
           <v-list-item @click="borrowD = true">
             <v-list-item-title>Borrow property</v-list-item-title>
           </v-list-item>
-        </router-link>
+        <!--</router-link>-->
        <!--<router-link to="/s/Transfer"> -->
            <v-list-item @click="transferD = true">
             <v-list-item-title>Transfer property</v-list-item-title>
@@ -134,16 +134,15 @@
       </v-card>
     </v-dialog>
 
-    <v-dialog v-model="borrowD" persistent max-width="600px">
-
+    <v-dialog
+      v-model="borrowD"
+      persistent
+      max-width="600px"
+    >
+      
       <v-card>
         <v-card-title class="white--text text-h5 blue lighten-2">
           borrow Form
-          <v-spacer></v-spacer>
-          <v-btn color="error" @click="borrowD = false">
-            <v-icon left>mdi-close</v-icon>
-            Close
-          </v-btn>
         </v-card-title>
         <v-card-text>
           <v-container>
@@ -151,14 +150,10 @@
             
 
               <v-col cols="12" sm="12" md="6">
-                <v-autocomplete v-model="borrow.PropertyId" :items="props" item-text="name" item-value="id" label="property" required></v-autocomplete>
+                <v-select :items="['kjkhg','jjjj','jddas']" label="property" required ></v-select>
               </v-col>
                <v-col cols="12" sm="12" md="6">
-                <v-autocomplete v-model="borrow.employeId" :items="emp" item-text="fullname" item-value="id" label="to employe" required></v-autocomplete>
-                <!-- <v-select :items="['kjkhg','jjjj','jddas']" label="Employe to be borroed" required ></v-select> -->
-              </v-col>
-              <v-col cols="12" sm="12" md="6">
-                <v-text-field v-model="borrow.quantity" label="Quantity*" required hint="12" type='number' min=1></v-text-field>
+                <v-select :items="['kjkhg','jjjj','jddas']" label="Employe to be borroed" required ></v-select>
               </v-col>
 
               
@@ -168,13 +163,16 @@
           <small class="red--text">*indicates required field</small>
         </v-card-text>
         <v-card-actions>
-         
-          <v-btn @click="performBorrow" color="success" >
+          <v-spacer></v-spacer>
+          <v-btn color="warning" @click="borrowD = false">
+            <v-icon left>mdi-close</v-icon>
+            Close
+          </v-btn>
+          <v-btn color="success" >
           <v-icon left>mdi-plus</v-icon>
-            borrow
+            send
           </v-btn>
         </v-card-actions>
-
       </v-card>
     </v-dialog>
 
@@ -188,11 +186,6 @@
       <v-card>
         <v-card-title class="white--text text-h5 blue lighten-2">
           leave Issue Form
-          <v-spacer></v-spacer>
-        <v-btn color="error" @click="lissueD = false">
-          <v-icon left>mdi-close</v-icon>
-          Close
-        </v-btn>
         </v-card-title>
         <v-card-text>
           <v-container>
@@ -200,15 +193,11 @@
             
 
               <v-col cols="12" sm="12" md="6">
-               <v-autocomplete v-model="lissue.PropertyId" :items="props" item-text="name" item-value="id" label="property" required></v-autocomplete>
-                <!-- <v-select :items="['kjkhg','jjjj','jddas']" label="property" required ></v-select> -->
+                <v-select :items="['kjkhg','jjjj','jddas']" label="property" required ></v-select>
               </v-col>
 
               <v-col cols="12" sm="12" md="6">
-                <v-text-field v-model="lissue.destination" label="Destination" required hint="Balerobe" type='text' ></v-text-field>
-              </v-col>
-              <v-col cols="12" sm="12" md="6">
-                <v-text-field v-model="lissue.quantity" label="Quantity*" required hint="12" type='number' min=1></v-text-field>
+                <v-text-field label="Destination" required hint="Balerobe" type='text' ></v-text-field>
               </v-col>
 
             </v-row>
@@ -217,13 +206,16 @@
           <small class="red--text">*indicates required field</small>
         </v-card-text>
         <v-card-actions>
-         
-          <v-btn @click="performlissue" color="success" >
+          <v-spacer></v-spacer>
+          <v-btn color="warning" @click="lissueD = false">
+            <v-icon left>mdi-close</v-icon>
+            Close
+          </v-btn>
+          <v-btn color="success" >
           <v-icon left>mdi-plus</v-icon>
-            leaveissue
+            send
           </v-btn>
         </v-card-actions>
-
       </v-card>
     </v-dialog>
 
@@ -236,11 +228,6 @@
       <v-card>
         <v-card-title class="white--text text-h5 blue lighten-2">
           transfer Form
-          <v-spacer></v-spacer>
-        <v-btn color="error" @click="transferD = false">
-          <v-icon left>mdi-close</v-icon>
-          Close
-        </v-btn>
         </v-card-title>
         <v-card-text>
           <v-container>
@@ -248,15 +235,10 @@
             
 
               <v-col cols="12" sm="12" md="6">
-               <v-autocomplete v-model="transfer.PropertyId" :items="props" item-text="name" item-value="id" label="property" required></v-autocomplete>
-                <!-- <v-select :items="['kjkhg','jjjj','jddas']" label="property" required ></v-select> -->
+                <v-select :items="['kjkhg','jjjj','jddas']" label="property" required ></v-select>
               </v-col>
                <v-col cols="12" sm="12" md="6">
-                <v-autocomplete v-model="transfer.emloyeId" :items="emp" item-text="fullname" item-value="id" label="to employe" required></v-autocomplete>
-                <!-- <v-select :items="['kjkhg','jjjj','jddas']" label="Employe to be borroed" required ></v-select> -->
-              </v-col>
-              <v-col cols="12" sm="12" md="6">
-                <v-text-field v-model="transfer.quantity" label="Quantity*" required hint="12" type='number' min=1></v-text-field>
+                <v-select :items="['kjkhg','jjjj','jddas']" label="Employe to be borroed" required ></v-select>
               </v-col>
 
               
@@ -266,10 +248,14 @@
           <small class="red--text">*indicates required field</small>
         </v-card-text>
         <v-card-actions>
-         
-          <v-btn color="success" @click="performtransfer" >
+          <v-spacer></v-spacer>
+          <v-btn color="warning" @click="transferD = false">
+            <v-icon left>mdi-close</v-icon>
+            Close
+          </v-btn>
+          <v-btn color="success" >
           <v-icon left>mdi-plus</v-icon>
-            transfer
+            send
           </v-btn>
         </v-card-actions>
       </v-card>
@@ -283,16 +269,11 @@ export default {
   data() {
     return {
       props: [],
-      emp:[],
       issueD: false,
       borrowD: false,
       lissueD: false,
       transferD: false,
-      issue: {},
-      borrow:{},
-      transfer:{},
-      lissue:{}
-
+      issue: {}
     }
   },
   methods: {
@@ -304,16 +285,19 @@ export default {
       if(response.data.success) {
         this.props = response.data.properties
       }
+
+      console.log(this.props)
     },
     async performIssue() {
       this.issue.emp_id = 12
       console.log(this.issue)
 
-      let q = this.props.find(x => x.id === this.issue.PropertyId).quantity;
+      let q = this.props.find(prop => prop.id === this.issue.PropertyId).quantity;
       if(this.issue.quantity > q){
         console.log("Not available Ammount")
         return
       }
+
       let url = "http://localhost:3000/api/staff/issue"
       let response = await axios.post(url,this.issue)
 
@@ -323,89 +307,11 @@ export default {
       else  {
         console.log("not added");
       }
-    
-
-
-    },
-    async fetchEmployees(){
-        var url = "http://localhost:3000/api/sa/get-employees";
-        let response = await axios.get(url);
-        if(response.data.success){
-        this.emp= response.data.employees
-        }
-        console.log(this.emp)
-      
-    },
-   
-    async performlissue(){
-       let q = this.props.find(x => x.id === this.lissue.PropertyId).quantity;
-      if(this.lissue.quantity > q){
-        console.log("Not available Ammount")
-        return
-        }
-       let url = "http://localhost:3000/api/staff/leave-issue"
-this.lissue.emp_id = 12
-    console.log(this.lissue) 
-    // return
-      let response = await axios.post(url,this.lissue)
-
-      
-console.log(response.data)
-
-      if(response.data.success) {
-        console.log("leave Issue Added")
-      } 
-      else  {
-        console.log("not added");
-      }
-    
-
-    },
-    async performtransfer(){
-       let q = this.props.find(x => x.id === this.transfer.PropertyId).quantity;
-      if(this.transfer.quantity > q){
-        console.log("Not available Ammount")
-        return
-        }
-       let url = "http://localhost:3000/api/staff/transfer"
-      let response = await axios.post(url,this.transfer)
-
-      if(response.data.success) {
-        console.log("Transfer Added")
-      } 
-      else  {
-        console.log("not added");
-      }
-    
-
-    },
-
-    async performBorrow(){
-       let q = this.props.find(x => x.id === this.borrow.PropertyId).quantity;
-      if(this.borrow.quantity > q){
-        console.log("Not available Ammount")
-        return
-        }
-       let url = "http://localhost:3000/api/staff/borrow"
-      let response = await axios.post(url,this.borrow)
-
-
-      if(response.data.success) {
-        console.log("Borrow Added")
-      } 
-      else  {
-        console.log("not added");
-      }
-    
 
     }
-
   },
   created() {
-    this.fetchData(),
-    this.fetchEmployees()
-   
-
+    this.fetchData()
   }
 }
 </script>

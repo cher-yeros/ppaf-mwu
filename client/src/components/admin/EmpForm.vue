@@ -96,7 +96,6 @@ const axios = require('axios');
     }),
     methods : {
       emitEvent() {
-        this.record = {}
         this.$emit('closed')
       },
       signSelected(e) {
@@ -137,19 +136,8 @@ const axios = require('axios');
 
       }
     },
-    watch: {
-      isAdd(value) {
-        if(value) {
-          this.record = {}
-        }
-      }
-    },
-    mounted() {
-      if(this.isAdd) {
-          this.record = {}
-        }
-      
-    },
+    watch: {},
+    mounted() {},
     created() {
       this.initialize()
     }

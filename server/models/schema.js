@@ -116,6 +116,15 @@ const Issue = connection.define('Issue', {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true
+    },
+    quantity: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+    },
+    quantity: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        defaultValue: 1
     }
 });
 
@@ -124,6 +133,10 @@ const Transfer = connection.define('Transfer', {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true
+    },
+    quantity: {
+        type: DataTypes.INTEGER,
+        allowNull: false
     }
 });
 
@@ -132,6 +145,11 @@ const Return = connection.define('Return', {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true
+    },
+    quantity: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        defaultValue: 1
     }
 });
 
@@ -140,6 +158,12 @@ const Borrow = connection.define('Borrow', {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true
+    }
+    ,
+    quantity: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        defaultValue: 1
     }
 });
 
@@ -152,6 +176,11 @@ const LeaveIssue = connection.define('LeaveIssue', {
     destination: {
         type: DataTypes.STRING,
         allowNull: false
+    },
+    quantity: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        defaultValue: 1
     }
 });
 
@@ -168,6 +197,11 @@ const PurchaseRequest = connection.define('PurchaseRequest', {
     spec : {
         type: DataTypes.STRING,
         allowNull: true
+    },
+    quantity: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        defaultValue: 1
     }
 });
 
