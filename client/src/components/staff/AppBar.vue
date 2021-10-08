@@ -338,6 +338,7 @@ export default {
     },
    
     async performlissue(){
+      
        let q = this.props.find(x => x.id === this.lissue.PropertyId).quantity;
       if(this.lissue.quantity > q){
         console.log("Not available Ammount")

@@ -15,8 +15,8 @@
           ></v-alert>
           <!-- <v-alert type="error" v-show="error" v-text="error"> </v-alert> -->
           <v-text-field
-            v-model="info.username"
-            :rules="unameRules"
+            v-model="info.idno"
+            :rules="idnoRules"
             label="Username"
             type="text"
             required
@@ -56,7 +56,7 @@ export default {
         role: ""
       },
       error: "",
-      unameRules: [(v) => !!v || "Username is required"],
+      idnoRules: [(v) => !!v || "Username is required"],
       passwordRules: [(v) => !!v || "Password is required"],
     };
   },
@@ -76,21 +76,21 @@ export default {
             this.$router.push('/store-keeper')
             break;
         }
-    //  axios
-    //    .post(this.endpoint, this.info)
-    //    .then(({ data }) => {
-    //      console.log(data);
-    //      if (data.success) {
-    //        this.$store.dispatch("setUser", data.user);
-    //        this.$router.push("/");
-    //      } else {
-    //        this.error = "Wrong username or password";
-    //      }
-    //    })
-    //    .catch((error) => {
-    //      console.log(error.response.data);
-    //      this.error = error.response.data;
-    //    });
+      axios
+        .post(this.endpoint, this.info)
+        .then(({ data }) => {
+          console.log(data);
+          if (data.success) {
+            this.$store.dispatch("setUser", data.user);
+            this.$router.push("/");
+          } else {
+            this.error = "Wrong username or password";
+          }
+        })
+        .catch((error) => {
+          console.log(error.response.data);
+          this.error = error.response.data;
+        });
 
       // this.$store.dispatch("setUser", this.info);
       // this.$router.push("/?username=hello&room=vue");
