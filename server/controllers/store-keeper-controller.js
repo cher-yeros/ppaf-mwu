@@ -37,7 +37,12 @@ module.exports = {
             const properties = await Property.findAll({
                 order: [
                     ['name', 'ASC']
-                ]
+                ],
+                where: {
+                    quantity: {
+                        [Op.gte]: 1
+                    }
+                }
             });
 
             res.send({

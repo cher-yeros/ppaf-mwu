@@ -218,7 +218,7 @@
         </v-card-text>
         <v-card-actions>
          
-          <v-btn @click="performlissue" color="success" >
+          <v-btn @click="performIssue" color="success" >
           <v-icon left>mdi-plus</v-icon>
             leaveissue
           </v-btn>
@@ -267,7 +267,7 @@
         </v-card-text>
         <v-card-actions>
          
-          <v-btn color="success" @click="performtransfer" >
+          <v-btn color="success" @click="performTransfer" >
           <v-icon left>mdi-plus</v-icon>
             transfer
           </v-btn>
@@ -323,9 +323,6 @@ export default {
       else  {
         console.log("not added");
       }
-    
-
-
     },
     async fetchEmployees(){
         var url = "http://localhost:3000/api/sa/get-employees";
@@ -336,22 +333,18 @@ export default {
         console.log(this.emp)
       
     },
-   
-    async performlissue(){
-      
-       let q = this.props.find(x => x.id === this.lissue.PropertyId).quantity;
+    async performIssue(){
+      let q = this.props.find(x => x.id === this.lissue.PropertyId).quantity;
       if(this.lissue.quantity > q){
         console.log("Not available Ammount")
         return
-        }
-       let url = "http://localhost:3000/api/staff/leave-issue"
-this.lissue.emp_id = 12
-    console.log(this.lissue) 
-    // return
+      }
+      let url = "http://localhost:3000/api/staff/leave-issue"
+      this.lissue.emp_id = 12
       let response = await axios.post(url,this.lissue)
 
       
-console.log(response.data)
+      console.log(response.data)
 
       if(response.data.success) {
         console.log("leave Issue Added")
@@ -362,7 +355,7 @@ console.log(response.data)
     
 
     },
-    async performtransfer(){
+    async performTransfer(){
        let q = this.props.find(x => x.id === this.transfer.PropertyId).quantity;
       if(this.transfer.quantity > q){
         console.log("Not available Ammount")
@@ -377,10 +370,7 @@ console.log(response.data)
       else  {
         console.log("not added");
       }
-    
-
     },
-
     async performBorrow(){
        let q = this.props.find(x => x.id === this.borrow.PropertyId).quantity;
       if(this.borrow.quantity > q){
@@ -405,8 +395,6 @@ console.log(response.data)
   created() {
     this.fetchData(),
     this.fetchEmployees()
-   
-
   }
 }
 </script>

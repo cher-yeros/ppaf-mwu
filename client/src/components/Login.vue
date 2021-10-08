@@ -25,12 +25,16 @@
             v-model="info.password"
             :rules="passwordRules"
             label="Password"
-            type="password"
+            :type="visible? 'text' : 'password'"
             required
+            :append-icon="visible? 'mdi-eye-off' : 'mdi-eye'"
+            @click:append="() => (visible = !visible)"
           ></v-text-field>
 
           <v-select
           :items="roles"
+          item-text="name"
+          item-value="slug"
           label="Choose Role"
           v-model="info.role"
         ></v-select>
@@ -40,18 +44,45 @@
         </v-form>
       </v-flex>
     </v-col>
+    <alert :d="d" v-if="alert" @dismissed="alert = false"></alert>
   </v-container>
 </template>
 
 <script>
-//import axios from "axios";
+import axios from "axios";
+import Alert from './Alert.vue';
 export default {
+  component: { Alert },
   data() {
     return {
-      roles: ['Staff','Admin','Purchaser','Store Keeper']  ,
+      d: {},
+      alert: false,
+      visible: false,
+      roles: [
+        {
+          slug: 'staff',
+          name: 'Staff' 
+        },
+        {
+          slug: 'admin',
+          name: 'Admin' 
+        },
+        {
+          slug: 'store-keeper',
+          name: 'Store Keeper' 
+        },
+        {
+          slug: 'purchaser',
+          name: 'Purchaser' 
+        },
+        {
+          slug: 'head',
+          name: 'Head' 
+        }
+      ],
       endpoint: "http://localhost:5000/login",
       info: {
-        username: "",
+        idno: "",
         password: "",
         role: ""
       },
@@ -61,42 +92,47 @@ export default {
     };
   },
   methods: {
-    login() {
+    async login() {
+      let url = "http://localhost:3000/api/login";
+
+      const response = await axios.post(url, this.info);
+
+      if(response.data.success) {
+        console.log("will be logged in")
+        console.log(this.roles[0].slug, this.info);
+        
         switch(this.info.role) {
-            case this.roles[0]: 
+            case this.roles[0].slug: 
             this.$router.push('/staff')
             break;
-            case this.roles[1]: 
+            case this.roles[1].slug: 
             this.$router.push('/sa')
             break;
-            case this.roles[2]: 
+            case this.roles[2].slug: 
             this.$router.push('/purchaser')
             break;
-            case this.roles[3]: 
+            case this.roles[3].slug: 
             this.$router.push('/store-keeper')
             break;
+            case this.roles[4].slug: 
+            this.$router.push('/head')
+            break;
         }
-      axios
-        .post(this.endpoint, this.info)
-        .then(({ data }) => {
-          console.log(data);
-          if (data.success) {
-            this.$store.dispatch("setUser", data.user);
-            this.$router.push("/");
-          } else {
-            this.error = "Wrong username or password";
-          }
-        })
-        .catch((error) => {
-          console.log(error.response.data);
-          this.error = error.response.data;
-        });
 
-      // this.$store.dispatch("setUser", this.info);
-      // this.$router.push("/?username=hello&room=vue");
+        this.d.type = "success"
+        this.d.msg = "Successfully Logged In"
+        this.alert = true
+      }
+      else {
+        console.log(response.data.error)
+        this.d.type = "error"
+        this.d.msg = response.data.error
+        this.alert = true
+      }
     },
   },
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+</style>
