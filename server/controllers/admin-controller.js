@@ -217,6 +217,20 @@ module.exports = {
         }
         
     },
+    async updateDepartment(req,res) {
+        const id = req.body.id;
+        delete req.body.id;
+        
+        const result = await Department.update(req.body, {
+             where:{
+                 id:id
+             }
+        })
+   
+        res.send({
+            success: result
+        })
+    },
     async getIssues(req,res) {
         const issues = await Issue.findAll(
             {

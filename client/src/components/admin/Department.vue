@@ -48,7 +48,7 @@
                     <v-select
                       :items="filterdEmps"
                       item-text="fullname"
-                      item-values="id"
+                      item-value="id"
                       v-model="editedItem.headId"
                       label="UnitPrice (g)"
                     ></v-select>
@@ -303,16 +303,13 @@ export default {
           this.initialize()
         }
         else {
-          let url = "http://localhost:3000/api/store-keeper/update-property";
+          let url = "http://localhost:3000/api/sa/update-deps";
 
-          let d = this.editedItem;
-          
-          delete d.createdAt
-          delete d.updatedAt
-
-          console.log(d)
-
-          return
+          let d = {}
+          d.name = this.editedItem.name;
+          d.college = this.editedItem.college;
+          d.headId = this.editedItem.headId;
+          d.id = this.editedItem.id;
 
           try {
             const response = await axios.put(url,d)
