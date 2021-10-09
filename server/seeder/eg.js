@@ -182,16 +182,25 @@ offices = [
 ]
 
 colleges.forEach(async (college) => {
-    await Department.create({
+    let dep = await Department.create({
         name: college.name,
         college: true
     })
 
+    await dep.update({
+        headId: faker.datatype.number({min:1,max:49})
+    })
+
     college.deps.forEach(async(dep) => {
-        await Department.create({
+        let dep1 = await Department.create({
             name: dep.name
         })
+        await dep1.update({
+            headId: faker.datatype.number({min:1,max:49})
+        })
     })
+
+    
 });
 
 offices.forEach(async (office) => {
@@ -206,6 +215,12 @@ offices.forEach(async (office) => {
         })
     })
 });
+
+//updateDep() {
+//    await Department.update({
+//        headId: faker.datatype.number({min:1,max:49})
+//    })
+//}
 
 const roles = [
     {

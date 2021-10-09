@@ -59,7 +59,29 @@ module.exports = {
     },
     async getEmployee(req,res) {
         const q = req.query.q;
-        console.log(q)
+
+        const by = req.query.by;
+
+        //res.send(req.body.depId)
+        if(by != undefined && by == 'dep') {
+            const employees = await Employee.findAll({
+                where: {
+                    depId: req.body.depId
+                },
+                include: [
+                    Role,
+                    {
+                    model: Department,
+                    as: 'dep'
+                }]
+            });
+            
+            res.send({
+                success: true,
+                employees
+            })
+        }
+        else { 
         if(q == undefined) {
             const employees = await Employee.findAll({
                 include: [
@@ -96,6 +118,7 @@ module.exports = {
                 employees
             })
         }
+    }
         
     },
     async addRole(req,res){
@@ -164,10 +187,35 @@ module.exports = {
         })
     },
     async getDepartment(req,res) {
-        const result = await Department.findAll();
-        res.send({
-            result
-        })
+        const q = req.query.q;
+        if(q == undefined){
+            const deps = await Department.findAll({
+                include: [
+                    {
+                        model :Employee,
+                        as: 'dephead',
+                        foreignKey : 'headId'
+                    }
+                ]
+            });
+            res.send({
+                success: true,
+                deps
+            })
+        }
+        else {
+            const deps = await Department.findAll({
+                where: {
+                    [Op.like]: `%${q}%`
+                }
+            });
+
+            res.send({
+                success: true,
+                deps
+            })
+        }
+        
     },
     async getIssues(req,res) {
         const issues = await Issue.findAll(

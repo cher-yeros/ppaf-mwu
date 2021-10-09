@@ -4,9 +4,9 @@ app.use(express.json());
 
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "http://localhost:8081");
-    res.header("Access-Control-Allow-Methods", "POST"); // update to match the domain you will make the request from
-    res.header("Access-Control-Allow-Methods", "PUT"); // update to match the domain you will make the request from
-    res.header("Access-Control-Allow-Methods", "DELETE"); // update to match the domain you will make the request from
+    res.header("Access-Control-Allow-Methods", "POST");
+    res.header("Access-Control-Allow-Methods", "PUT");
+    res.header("Access-Control-Allow-Methods", "DELETE");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
 });

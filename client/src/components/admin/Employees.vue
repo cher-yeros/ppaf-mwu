@@ -35,7 +35,7 @@
     </template>
 
     <template v-slot:item.dep="{ item }" v-text="">
-      {{item.dep}}
+      {{item.dep? item.dep.name : "Has no dep"}}
     </template>
     
     <template v-slot:item.actions="{ item }">

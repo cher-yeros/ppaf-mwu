@@ -17,7 +17,9 @@ import AcceptAndGiveIssue from '../components/storekeeper/A&Gissue.vue';
 import ViewProperty from '../components/storekeeper/ViewP.vue';
 import TakeProperty from '../components/storekeeper/TakeP.vue';
 import ManageIssue from '../components/storekeeper/ManageP.vue';
-Vue.use(VueRouter)
+import Departments from '../components/admin/Department.vue';
+
+Vue.use(VueRouter);
 
 const routes = [
   {
@@ -46,9 +48,9 @@ const routes = [
     component: Purchaser
   },
   {
-    path: '/sa/logs',
-    name: 'logs',
-    component: Log
+    path: '/sa/deps',
+    name: 'deps',
+    component: Departments
   },
   {
     path: '/sa/employees',
@@ -59,6 +61,11 @@ const routes = [
     path: '/sa/transaction',
     name: 'transaction',
     component: Transaction
+  },
+  {
+    path: '/sa/logs',
+    name: 'logs',
+    component: Log
   },
   {
     path: '/sk/agissue',

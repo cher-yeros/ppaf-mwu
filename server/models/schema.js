@@ -208,14 +208,16 @@ const PurchaseRequest = connection.define('PurchaseRequest', {
 Employee.belongsToMany(Role, { through: 'EmployeeRole' });
 Role.belongsToMany(Employee, { through: 'EmployeeRole' });
 
-Employee.hasOne(Department, {
+Department.belongsTo(Employee, {
     as: 'dephead',
-    foreignKey: 'headId'
+    foreignKey: 'headId',
+    constraints: false
 });
 
 Employee.belongsTo(Department, {
     constraints: false,
     as : 'dep',
+    //foreignKey: 'depId'
 })
 
 Issue.belongsTo(Employee, {
