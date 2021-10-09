@@ -121,10 +121,10 @@ const Issue = connection.define('Issue', {
         type: DataTypes.INTEGER,
         allowNull: false
     },
-    quantity: {
-        type: DataTypes.INTEGER,
+    approved: {
+        type: DataTypes.BOOLEAN,
         allowNull: false,
-        defaultValue: 1
+        defaultValue: false
     }
 });
 
@@ -344,4 +344,4 @@ module.exports.Borrow = Borrow;
 module.exports.LeaveIssue = LeaveIssue;
 module.exports.PurchaseRequest = PurchaseRequest;
 
-//connection.sync({ force: true });
+// connection.sync({ force: true });

@@ -1,6 +1,6 @@
 const Joi = require('joi')
 const { Op }  = require('sequelize')
-const { Property } = require('../models/schema')
+const { Property, Issue } = require('../models/schema')
 
 const schema = Joi.object({
     name: Joi.string().required(),
@@ -100,5 +100,59 @@ module.exports = {
         })
    
    
+    },
+    async approveIssue(req,res) {
+        const result = await Issue.update({approved: true},{
+                where:{
+                    id: req.body.id
+                }
+        })
+
+        res.send({
+            result
+        })
+    },
+    async approveReturn(req,res) {
+        const result = await Issue.update({approved: true},{
+            where:{
+                id: req.body.id
+            }
+        })
+
+        res.send({
+            result
+        })
+    },
+    async getApprovedIssues(req,res) {
+        const issues = await Issue.findAll(
+            {
+                where: {
+                    approved: true
+                },
+                include : [
+                {
+                    model: Employee,
+                    foreignKey : "emp_id",
+                    as: 'employee'
+                },
+                {
+                    model: Employee,
+                    foreignKey : "head_id",
+                    as: 'head'
+                },
+                {
+                    model: Employee,
+                    foreignKey : "store_keeper_id",
+                    as: 'storeKeeper'
+                },
+                Property
+            ]
+        }
+        );
+
+        res.send({
+            success: true,
+            issues
+        })
     }
 }

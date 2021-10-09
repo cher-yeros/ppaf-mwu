@@ -234,6 +234,9 @@ module.exports = {
     async getIssues(req,res) {
         const issues = await Issue.findAll(
             {
+                where: {
+                    approved: false
+                },
                 include : [
                 {
                     model: Employee,
