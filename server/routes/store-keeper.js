@@ -12,8 +12,8 @@ router.delete('/delete-property', SKController.deleteProperty);
 router.put('/update-property', SKController.updateProperty);
 router.get('/get-property', SKController.getProperty);
 router.put('/approve-issue', SKController.approveIssue);
-//router.put('/approve-return', SKController.approveReturn);
-//router.put('/get-return', SKController.approveReturn);
+router.put('/approve-return', SKController.approveReturn);
+router.get('/get-approved-issues', SKController.getApprovedIssues);
 
 
 
