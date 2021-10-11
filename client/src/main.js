@@ -16,7 +16,7 @@ const axios = require('axios');
 Vue.prototype.$axios = axios
 Vue.prototype.$vueEventBus = new Vue()
 Vue.prototype.$alert = null
-Vue.prototype.$hostname = 'http://localhost:3000/'
+Vue.prototype.$hostname = 'http://10.215.30.82:3000/'
 
 Vue.config.productionTip = false
 Vue.component('a-app-bar', AdminAppBar)

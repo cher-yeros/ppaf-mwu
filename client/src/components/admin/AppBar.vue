@@ -7,7 +7,7 @@
   fixed
 >
 <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
-<router-link to="/sa" class="brand" >
+<router-link to="/sa"  >
   <v-toolbar-title>Super Admin</v-toolbar-title>
 </router-link>
 <v-spacer></v-spacer>

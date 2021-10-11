@@ -2,7 +2,9 @@
 <div>
   <s-app-bar></s-app-bar>
   <v-main >
-    <<v-simple-table v-if="status.issued">
+    <v-card v-if="status.issued.length > 0">
+      <v-card-title>Issued</v-card-title>
+      <v-simple-table>
     <template v-slot:default>
       <thead>
         <tr>
@@ -25,6 +27,7 @@
       </tbody>
     </template>
   </v-simple-table>
+    </v-card>
   </v-main>
 </div>
 </template>
@@ -36,7 +39,16 @@ export default {
   component: { AppBar },
   data () {
     return {
-      status: null
+      status: {
+        "issued": [],
+        "borrowedFrom": [],
+        "borrowsTo": [],
+        "returns": [],
+        "leavedIssues": [],
+        "requested": [],
+        "transfers": [],
+        "getTransferFrom": []
+      }
     }
   },
   methods: {

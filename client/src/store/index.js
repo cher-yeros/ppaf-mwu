@@ -1,22 +1,8 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import createPersistedState from "vuex-persistedstate";
 
 Vue.use(Vuex)
-
-const model = {
-  token: {
-    default: null,
-    saved: true,
-  },
-  user: {
-    default: null,
-    saved: true,
-  },
-  loggedIn: {
-    default: false,
-    saved: true,
-  },
-};
 
 
 export default new Vuex.Store({
@@ -46,5 +32,6 @@ export default new Vuex.Store({
   actions: {
   },
   modules: {
-  }
+  },
+  plugins: [createPersistedState()],
 })

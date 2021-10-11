@@ -11,7 +11,8 @@
         <v-toolbar dense dark flat color="blue">
           <!--<v-toolbar-title>Login</v-toolbar-title>-->
          
-  <v-tabs fixed-tabs background-color="#0148a4" dark v-model="role">
+  <v-tabs fixed-tabs background-color="#0148a4" next-icon="mdi-arrow-right-bold-box-outline"
+      prev-icon="mdi-arrow-left-bold-box-outline" dark v-model="role">
     <v-tab v-for="role in roles" :key="role.slug">
         {{ role.name }}
     </v-tab>
@@ -95,8 +96,8 @@ export default {
         }
       ],
       info: {
-        idno: "mwu/123/2015",
-        password: "password",
+        idno: "",
+        password: "",
         role: ""
       },
       error: "",
