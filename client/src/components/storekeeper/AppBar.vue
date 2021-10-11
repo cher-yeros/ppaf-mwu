@@ -37,7 +37,7 @@
          <v-list>
          <v-list-item>
           <v-list-item-title>Profile</v-list-item-title>
-        </v-list-item>
+        </v-list-item @click="logout">
         <v-list-item>
           <v-list-item-title>Logout</v-list-item-title>
         </v-list-item>
@@ -49,7 +49,17 @@
 
 <script>
 export default {
+  methods: {
+    logout() {
+      this.$store.commit('storeLogin', {
+        loggedIn : false,
+        user : {},
+        roles : [],
+      })
 
+      this.$router.push('/')
+    }
+  }
 }
 </script>
 

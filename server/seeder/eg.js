@@ -216,12 +216,6 @@ offices.forEach(async (office) => {
     })
 });
 
-//updateDep() {
-//    await Department.update({
-//        headId: faker.datatype.number({min:1,max:49})
-//    })
-//}
-
 const roles = [
     {
         name: "staff"
@@ -262,9 +256,15 @@ for (let i = 0; i < 300; i++) {
     employees.push(emp)
 }
 employees.forEach(async(emp) => {
-    //console.log(emp)
-    //return
-    await Employee.create(emp)
+    let employee = await Employee.create(emp)
+    let role = await Role.findOne({
+        where: {
+            name: "staff"
+        }
+    })
+
+    employee.addRole(role, { through: { selfGranted: false } });
+    
 });
 
 var props = []

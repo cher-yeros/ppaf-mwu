@@ -1,6 +1,6 @@
 const { reverse } = require('lodash');
 const { Op } = require('sequelize');
-const { Issue, Borrow, Return, LeaveIssue, PurchaseRequest, Transfer, Property } = require('../models/schema')
+const { Issue, Borrow, Return, LeaveIssue, PurchaseRequest, Transfer, Property, Employee } = require('../models/schema')
 
 module.exports = {
     async issueProperty(req,res) {
@@ -59,74 +59,190 @@ module.exports = {
 
     },
     async showStatus(req,res) {
+        let id = req.params.id
         const issued = await Issue.findAll({
             where: {
-                emp_id : {
-                    [Op.eq] : req.body.id
-                }
-            }
+                emp_id : id,
+            },
+                include : [
+                    {
+                        model: Employee,
+                        foreignKey : "emp_id",
+                        as: 'employee'
+                    },
+                    {
+                        model: Employee,
+                        foreignKey : "head_id",
+                        as: 'head'
+                    },
+                    {
+                        model: Employee,
+                        foreignKey : "store_keeper_id",
+                        as: 'storeKeeper'
+                    },
+                    Property
+                ]
+            
         })
 
-        const borrowed = await  Borrow.findAll({
+
+        const borrowedFrom = await  Borrow.findAll({
             where: {
-                borrower_emp_id : {
-                    [Op.eq] : req.body.id
-                }
-            }
+                borrowed_to_emp_id : id
+            },
+            include : [
+                {
+                    model: Employee,
+                    foreignKey : "borrower_emp_id",
+                    as: 'giver'
+                },
+                {
+                    model: Employee,
+                    foreignKey : "borrowed_to_emp_id",
+                    as: 'taker'
+                },
+                Property
+            ]
         })
 
-        const borrows = await Borrow.findAll({
+        const borrowsTo = await Borrow.findAll({
             where: {
-                borrowed_to_emp_id : {
-                    [Op.eq] : req.body.id
-                }
-            }
+                borrower_emp_id : id
+            },
+            include : [
+                {
+                    model: Employee,
+                    foreignKey : "borrower_emp_id",
+                    as: 'giver'
+                },
+                {
+                    model: Employee,
+                    foreignKey : "borrowed_to_emp_id",
+                    as: 'taker'
+                },
+                Property
+            ]
         })
 
         const returns = await Return.findAll({
             where: {
-                emp_id : {
-                    [Op.eq] : req.body.id
-                }
-            }
+                emp_id : id
+            },
+            include : [
+                {
+                    model: Employee,
+                    foreignKey : "emp_id",
+                    as: 'employee'
+                },
+                {
+                    model: Employee,
+                    foreignKey : "store_keeper_id",
+                    as: 'storeKeeper'
+                },
+                Property
+            ]
         })
 
         const leavedIssues = await LeaveIssue.findAll({
             where: {
-                emp_id : {
-                    [Op.eq] : req.body.id
-                }
-            }
+                emp_id : id
+            },
+            include : [
+                {
+                    model: Employee,
+                    foreignKey : "emp_id",
+                    as: 'employee'
+                },
+                {
+                    model: Employee,
+                    foreignKey : "store_keeper_id",
+                    as: 'storeKeeper'
+                },
+                {
+                    model: Employee,
+                    foreignKey : "purchaser_id",
+                    as: 'purchaser'
+                },
+                Property
+            ]
         })
 
         const requested = await PurchaseRequest.findAll({
             where: {
-                emp_id : {
-                    [Op.eq] : req.body.id
-                }
-            }
+                emp_id : id
+            },
+            include : [
+                {
+                    model: Employee,
+                    foreignKey : "emp_id",
+                    as: 'employee'
+                },
+                {
+                    model: Employee,
+                    foreignKey : "store_keeper_id",
+                    as: 'storeKeeper'
+                },
+                {
+                    model: Employee,
+                    foreignKey : "head_id",
+                    as: 'head'
+                },
+                Property
+            ]
         })
 
         const transfers = await Transfer.findAll({
             where: {
-                from_emp_id : {
-                    [Op.eq] : req.body.id
-                }
-            }
+                from_emp_id : id
+            },
+            include : [
+                {
+                    model: Employee,
+                    foreignKey : "from_emp_id",
+                    as: 'from'
+                },
+                {
+                    model: Employee,
+                    foreignKey : "to_emp_id",
+                    as: 'to'
+                },
+                {
+                    model: Employee,
+                    foreignKey : "store_keeper_id",
+                    as: 'storeKeeper'
+                },
+                Property
+            ]
         })
 
         const getTransferFrom = await Transfer.findAll({
             where: {
-                to_emp_id : {
-                    [Op.eq] : req.body.id
-                }
-            }
+                to_emp_id : id
+            },
+            include : [
+                {
+                    model: Employee,
+                    foreignKey : "from_emp_id",
+                    as: 'from'
+                },
+                {
+                    model: Employee,
+                    foreignKey : "to_emp_id",
+                    as: 'to'
+                },
+                {
+                    model: Employee,
+                    foreignKey : "store_keeper_id",
+                    as: 'storeKeeper'
+                },
+                Property
+            ]
         })
 
         res.send({
             issued,
-            borrowed,
-            borrows,
+            borrowedFrom,
+            borrowsTo,
             returns,
             leavedIssues,
             requested,

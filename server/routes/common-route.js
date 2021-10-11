@@ -3,7 +3,6 @@ const router = express.Router()
 const { Employee, Role, Department } = require('../models/schema')
 
 router.post("/login", async (req,res) => {
-    let roles = ['Staff','Admin','Purchaser','Store Keeper','Head'] 
     const emp = await Employee.findOne({
         where: {
             idno: req.body.idno,
@@ -17,45 +16,46 @@ router.post("/login", async (req,res) => {
             error: "Incorrect ID Number or Password"
         })
     }
-
-    const e = await Employee.findOne({
-        where: {
-            id:emp.id
-        },
-        include: [
-            Role,
-            {
-            model: Department,
-            as: 'dep'
-        }]
-    })
-
-    let roleError = true
-
-    if(e) {
-        e.Roles.forEach(role => {
-            if(role.name == req.body.role) {
-                roleError = false
+    else {
+        const e = await Employee.findOne({
+            where: {
+                id:emp.id
+            },
+            include: [
+                Role,
+                {
+                model: Department,
+                as: 'dep'
+            }]
+        })
+    
+        let roleError = true
+    
+        if(e) {
+            e.Roles.forEach(role => {
+                if(role.name == req.body.role) {
+                    roleError = false
+                }
+            });
+            if(roleError) {
+                res.send({
+                    success: false,
+                    error: "You are not granted"
+                })
             }
-        });
-        if(roleError) {
-            res.send({
-                success: false,
-                error: "You are not granted"
-            })
+            else {
+                res.send({
+                    success: true,
+                    e
+                })
+            }
         }
         else {
             res.send({
-                success: true,
-                e
-            })
+                success: false,
+                error: "Incorrect ID Number or Password"
+            }) 
         }
-    }
-    else {
-        res.send({
-            success: false,
-            error: "Incorrect ID Number or Password"
-        }) 
     }
 })
 

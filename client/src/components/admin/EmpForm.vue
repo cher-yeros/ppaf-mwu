@@ -30,7 +30,7 @@
               </v-col>
 
               <v-col class="rapper" cols="12" sm="12" md="6">
-                <v-select v-model="record.depId" :items="deps"  item-text="name" item-value="id" label="Department" required ></v-select>
+                <v-autocomplete v-model="record.depId" :items="deps"  item-text="name" item-value="id" label="Department" required ></v-autocomplete>
               </v-col>
 
               <v-col class="rapper" cols="12" sm="12" md="6">
@@ -103,21 +103,21 @@ const axios = require('axios');
           console.log(e.target)
       },
       async initialize() {
-        var url = "http://localhost:3000/api/sa/get-deps";
+        var url = this.$hostname+"api/sa/get-deps";
 
-        let response = await axios.get(url);
+        let response = await this.$axios.get(url);
 
-        this.deps = response.data.result
+        this.deps = response.data.deps
 
         console.log(this.deps)
       },
       async submitForm() {
         this.record.sign = "https://toppng.com/uploads/preview/signature-png-115539501081nmjnfovlk.png";
         this.record.avatar = "https://www.google.com/imgres?imgurl=https%3A%2F%2Fdata.whicdn.com%2Fimages%2F302058504%2Foriginal.jpg%3Ft%3D1511579073&imgrefurl=https%3A%2F%2Fweheartit.com%2Farticles%2F302058504-profile-pictures-girls&tbnid=4izHLjAAooe2hM&vet=12ahUKEwiy26XxrLXzAhWS8IUKHVVYCiUQMygEegUIARDUAQ..i&docid=kyF2Vmx4CIqAhM&w=500&h=496&q=girl%20profile%20picture&hl=en&ved=2ahUKEwiy26XxrLXzAhWS8IUKHVVYCiUQMygEegUIARDUAQ";
-        var url = "http://localhost:3000/api/sa/add-employee";
+        var url = this.$hostname+"api/sa/add-employee";
         
         try {
-          var response = await axios.post(url, this.record);
+          var response = await this.$axios.post(url, this.record);
           
           if(response.data.success) {
             this.d = {

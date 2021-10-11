@@ -127,9 +127,9 @@ const axios = require('axios');
 
     methods: {
       async initialize () {
-        let url = "http://localhost:3000/api/sa/get-issues"
+        let url = this.$hostname+"api/sa/get-issues"
 
-        let response = await axios.get(url);
+        let response = await this.$axios.get(url);
 
         if(response.data.success) {
           this.issues = response.data.issues
@@ -147,13 +147,13 @@ const axios = require('axios');
         // return;
         
 
-        let url = "http://localhost:3000/api/store-keeper/approve-issue"
+        let url = this.$hostname+"api/store-keeper/approve-issue"
 
         let data = {
           id : this.editedItem.id
         }
 
-        let response = await axios.put(url, data)
+        let response = await this.$axios.put(url, data)
 
         if(response.data.result[0]) {
           this.initialize()
@@ -176,10 +176,10 @@ const axios = require('axios');
         let item = this.issues.splice(this.editedIndex, 1)
 
         let id = item[0].id;
-        let url = "http://localhost:3000/api/store-keeper/delete-property";
+        let url = this.$hostname+"api/store-keeper/delete-property";
 
         console.log(id, " = to be deleted")
-        let response = await axios.delete(url,{
+        let response = await this.$axios.delete(url,{
           data : {id}
         })
 
@@ -216,8 +216,8 @@ const axios = require('axios');
           return
         }
 
-        let url = `http://localhost:3000/api/store-keeper/get-property?q=${this.search}`
-        let response = await axios.get(url);
+        let url = this.$hostname+`api/store-keeper/get-property?q=${this.search}`
+        let response = await this.$axios.get(url);
 
         if(response.data.success) {
           this.issues = response.data.issues
@@ -225,7 +225,7 @@ const axios = require('axios');
       },
       async save () {
         if(this.editedIndex === -1) {
-          let url = "http://localhost:3000/api/store-keeper/add-property";
+          let url = this.$hostname+"api/store-keeper/add-property";
 
           let d = this.editedItem;
           
@@ -235,7 +235,7 @@ const axios = require('axios');
           console.log(d)
 
           try {
-            const response = await axios.post(url,d)
+            const response = await this.$axios.post(url,d)
             if(response.data.success) {
               console.log("Success")
             }
@@ -249,7 +249,7 @@ const axios = require('axios');
           this.initialize()
         }
         else {
-          let url = "http://localhost:3000/api/store-keeper/update-property";
+          let url = this.$hostname+"api/store-keeper/update-property";
 
           let d = this.editedItem;
           
@@ -259,7 +259,7 @@ const axios = require('axios');
           console.log(d)
 
           try {
-            const response = await axios.put(url,d)
+            const response = await this.$axios.put(url,d)
               if(response.data.success[0]) {
                 console.log("Success")
               }

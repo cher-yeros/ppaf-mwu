@@ -80,15 +80,13 @@
       </v-list-item-title>
     </v-list-item>
     <v-divider></v-divider>
-    <v-list-item>
+    <v-list-item small @click="logout">
       <v-list-item-title>
           <v-icon left >mdi-logout</v-icon>
           Logout</v-list-item-title>
     </v-list-item>
   </v-list>
 </v-menu>
-
-
 
     <v-dialog
       v-model="issueD"
@@ -101,7 +99,7 @@
           Issue Form
           <v-spacer></v-spacer>
             <v-btn color="error" @click="issueD = false">
-              <v-icon left>mdi-close</v-icon>
+              <v-icon>mdi-close</v-icon>
             </v-btn>
         </v-card-title>
 
@@ -297,9 +295,9 @@ export default {
   },
   methods: {
     async fetchData() {
-      let url = "http://localhost:3000/api/store-keeper/get-property"
+      let url = this.$hostname+"api/store-keeper/get-property"
 
-      let response = await axios.get(url);
+      let response = await this.$axios.get(url);
 
       if(response.data.success) {
         this.props = response.data.properties
@@ -307,15 +305,14 @@ export default {
     },
     async performIssue() {
       this.issue.emp_id = 12
-      console.log(this.issue)
 
       let q = this.props.find(x => x.id === this.issue.PropertyId).quantity;
       if(this.issue.quantity > q){
         console.log("Not available Ammount")
         return
       }
-      let url = "http://localhost:3000/api/staff/issue"
-      let response = await axios.post(url,this.issue)
+      let url = this.$hostname+"api/staff/issue"
+      let response = await this.$axios.post(url,this.issue)
 
       if(response.data.success) {
         console.log("Issue Added")
@@ -325,12 +322,11 @@ export default {
       }
     },
     async fetchEmployees(){
-        var url = "http://localhost:3000/api/sa/get-employees";
-        let response = await axios.get(url);
+        var url = this.$hostname+"api/sa/get-employees";
+        let response = await this.$axios.get(url);
         if(response.data.success){
         this.emp= response.data.employees
         }
-        console.log(this.emp)
       
     },
     async performIssue(){
@@ -339,12 +335,9 @@ export default {
         console.log("Not available Ammount")
         return
       }
-      let url = "http://localhost:3000/api/staff/leave-issue"
+      let url = this.$hostname+"api/staff/leave-issue"
       this.lissue.emp_id = 12
-      let response = await axios.post(url,this.lissue)
-
-      
-      console.log(response.data)
+      let response = await this.$axios.post(url,this.lissue)
 
       if(response.data.success) {
         console.log("leave Issue Added")
@@ -361,8 +354,8 @@ export default {
         console.log("Not available Ammount")
         return
         }
-       let url = "http://localhost:3000/api/staff/transfer"
-      let response = await axios.post(url,this.transfer)
+       let url = this.$hostname+"api/staff/transfer"
+      let response = await this.$axios.post(url,this.transfer)
 
       if(response.data.success) {
         console.log("Transfer Added")
@@ -377,8 +370,8 @@ export default {
         console.log("Not available Ammount")
         return
         }
-       let url = "http://localhost:3000/api/staff/borrow"
-      let response = await axios.post(url,this.borrow)
+       let url = this.$hostname+"api/staff/borrow"
+      let response = await this.$axios.post(url,this.borrow)
 
 
       if(response.data.success) {
@@ -389,8 +382,16 @@ export default {
       }
     
 
-    }
+    },
+    logout() {
+      this.$store.commit('storeLogin', {
+        loggedIn : false,
+        user : {},
+        roles : [],
+      })
 
+      this.$router.push('/')
+    }
   },
   created() {
     this.fetchData(),

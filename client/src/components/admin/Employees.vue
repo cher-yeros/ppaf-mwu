@@ -34,23 +34,36 @@
       </v-toolbar>
     </template>
 
+
     <template v-slot:item.dep="{ item }" v-text="">
       {{item.dep? item.dep.name : "Has no dep"}}
+    </template>
+
+    <template v-slot:item.role="{ item }" v-text="">
+      <v-btn small color="primary" v-for="role in item.Roles">
+        {{ role.name }}
+      </v-btn>
     </template>
     
     <template v-slot:item.actions="{ item }">
       <v-btn-toggle>
-        <v-btn class="" @click="editItem(item)" color="success">
-        <v-icon left >
-          mdi-pencil
-        </v-icon> Edit
-      </v-btn>
+        <v-btn width="100px" small class="" @click="editItem(item)" color="success">
+          <v-icon left >
+            mdi-pencil
+          </v-icon> Set Roles
+        </v-btn>
 
-      <v-btn class="" @click="deleteItem(item)" color="error">
-        <v-icon dark left >
-          mdi-delete
-        </v-icon> Delete
-      </v-btn>
+        <v-btn small class="" @click="editItem(item)" color="success">
+          <v-icon left >
+            mdi-pencil
+          </v-icon> Edit
+        </v-btn>
+
+        <v-btn small class="" @click="deleteItem(item)" color="error">
+          <v-icon dark left >
+            mdi-delete
+          </v-icon> Delete
+        </v-btn>
       </v-btn-toggle>
     </template>
 
@@ -83,6 +96,7 @@ export default {
             { text: 'Phone', value: 'phone' },
             { text: 'Email', value: 'email' },
             { text: 'Department', value: 'dep' },
+            { text: 'Role', value: 'role' },
             { text: 'Position', value: 'position',sortable: false },
             { text: 'Office No', value: 'office_no', sortable: false },
             { text: 'Actions', value: 'actions', sortable: false },
@@ -112,10 +126,10 @@ export default {
         this.dialogDelete = false
       },
       async initialize() {
-        var url = "http://localhost:3000/api/sa/get-employees";
+        var url = this.$hostname+"api/sa/get-employees";
 
         try {
-          let response = await axios.get(url);
+          let response = await this.$axios.get(url);
           this.employees = response.data.employees
         } catch (error) {
           console.log(error);
@@ -135,6 +149,7 @@ export default {
     
   },
   created() {
+    console.log(this.$store.state.login)
     this.initialize()
   }
   

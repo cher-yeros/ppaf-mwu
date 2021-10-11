@@ -26,6 +26,10 @@ app.use('/api/sa',admin);
  
 app.listen(3000)
 
-//app.listen(3000, '192.168.137.74');
+const port = 3000
+//const ip = '192.168.43.123'
+const ip = '10.215.4.92'
 
-console.log('Server is listening to localhost : 3000')
+app.listen(port, ip);
+
+console.log(`Server is listening to ${ip} on port ${port}`)

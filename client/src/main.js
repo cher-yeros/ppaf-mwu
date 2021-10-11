@@ -14,6 +14,9 @@ import Alert from './components/Alert.vue';
 const axios = require('axios');
 
 Vue.prototype.$axios = axios
+Vue.prototype.$vueEventBus = new Vue()
+Vue.prototype.$alert = null
+Vue.prototype.$hostname = 'http://localhost:3000/'
 
 Vue.config.productionTip = false
 Vue.component('a-app-bar', AdminAppBar)

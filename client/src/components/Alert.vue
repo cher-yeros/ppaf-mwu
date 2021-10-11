@@ -1,18 +1,17 @@
 <template>
-  <div class="text-center c-alert" >
-    <v-alert v-if="showAlert" border="left" dismissible prominent :type="d.type">
-          {{d.msg}}
+  <div v-show="show" class="text-center c-alert" >
+    <v-alert border="left" dismissible prominent :type="ad.type">
+          {{ ad.msg }}
       </v-alert>
   </div>
 </template>
 
 <script>
 export default {
-  props: ['d'],
   data() {
       return {
-          dialog: true,
-          showAlert: true
+          show : false,
+          ad : {}
       }
   },
   computed : {
@@ -30,12 +29,33 @@ export default {
   },
   methods: {
     closeAlert() {
-      this.showAlert = false;
-      this.$emit('dismissed')
+      this.show = false;
+      this.$store.commit('showAlert', {
+        show : false,
+        msg : '',
+        type : ''
+      })
+    },
+    showAlert() {
+      this.show = true
+      setTimeout(this.closeAlert,3000)
     }
   },
   mounted() {
-    setTimeout(this.closeAlert,5000)
+    setTimeout(this.closeAlert,3000)
+
+  },
+  watch:  {
+    '$store.state.alertData' : function() {
+      let d = this.$store.state.alertData
+      if(d.show) {
+        this.ad = d
+        this.showAlert()
+      }
+    }
+  },
+  created() {
+    
   }
 }
 </script>

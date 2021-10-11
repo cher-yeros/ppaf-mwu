@@ -15,7 +15,7 @@ router.post('/leave-issue', StaffController.leaveIssue)
 router.post('/return', StaffController.returnProperty)
 router.post('/request-purchase', StaffController.requestPurchase)
 
-router.get('/status',StaffController.showStatus)
+router.get('/status/:id',StaffController.showStatus)
 
 //router.get('/confirm', HeadController.confirmRequest);
 

@@ -1,11 +1,24 @@
 <template>
    <v-container>
-    <v-col justify="center" align="center" height="00px">
-      <v-flex xs12 sm8 md6 class="mx-2 white elevation-6">
+   <v-row justify="center">
+      <v-img src="../assets/mwu.png"  max-width='150' aspect-ratio="0.9"/>
+   </v-row> 
+
+  <h1 align='center' class="blue--text ma-2">Procurement and property Administration Portal</h1>
+   
+    <v-col justify="center" align="center" >
+      <v-flex xs12 sm8 md7 class="mx-2 white elevation-6">
         <v-toolbar dense dark flat color="blue">
-          <v-toolbar-title>Login</v-toolbar-title>
+          <!--<v-toolbar-title>Login</v-toolbar-title>-->
+         
+  <v-tabs fixed-tabs background-color="#0148a4" dark v-model="role">
+    <v-tab v-for="role in roles" :key="role.slug">
+        {{ role.name }}
+    </v-tab>
+  </v-tabs>
+
         </v-toolbar>
-        <v-form m-3 p-3 class="mx-5 px-4" aria-autocomplete="off">
+        <v-form m-3 p-3 class="mx-5 px-4" aria-autocomplete="off" ref="loginForm">
           <v-alert
             dense
             type="error"
@@ -17,7 +30,7 @@
           <v-text-field
             v-model="info.idno"
             :rules="idnoRules"
-            label="Username"
+            label="ID Number"
             type="text"
             required
           ></v-text-field>
@@ -29,32 +42,33 @@
             required
             :append-icon="visible? 'mdi-eye-off' : 'mdi-eye'"
             @click:append="() => (visible = !visible)"
+            @keyup.enter="login"
           ></v-text-field>
 
-          <v-select
+          <!--<v-select
           :items="roles"
           item-text="name"
           item-value="slug"
           label="Choose Role"
           v-model="info.role"
-        ></v-select>
+        ></v-select>-->
 
           <v-btn class="blue my-2" dark @click="login">Login</v-btn>
           <br />
         </v-form>
       </v-flex>
     </v-col>
-    <alert :d="d" v-if="alert" @dismissed="alert = false"></alert>
+    <alert></alert>
   </v-container>
 </template>
 
 <script>
-import axios from "axios";
 import Alert from './Alert.vue';
 export default {
   component: { Alert },
   data() {
     return {
+      role: null,
       d: {},
       alert: false,
       visible: false,
@@ -80,57 +94,74 @@ export default {
           name: 'Head' 
         }
       ],
-      endpoint: "http://localhost:5000/login",
       info: {
-        idno: "",
-        password: "",
+        idno: "mwu/123/2015",
+        password: "password",
         role: ""
       },
       error: "",
-      idnoRules: [(v) => !!v || "Username is required"],
+      idnoRules: [(v) => !!v || "Id Number is required"],
       passwordRules: [(v) => !!v || "Password is required"],
     };
   },
   methods: {
     async login() {
-      let url = "http://localhost:3000/api/login";
+      if(!this.$refs.loginForm.validate()) {
+        return
+      }
 
-      const response = await axios.post(url, this.info);
+      let role = this.roles[this.role].slug
+      this.info.role = role
+      let url = this.$hostname+"api/login";
+      const response = await this.$axios.post(url, this.info);
+
 
       if(response.data.success) {
-        console.log("will be logged in")
-        console.log(this.roles[0].slug, this.info);
+        let emp = response.data.e;
+        emp.loggedInAs = role
+
+        this.$store.commit('storeLogin', emp)
+
+        this.redirect(role)
         
-        switch(this.info.role) {
+      }
+      else {
+        this.$store.commit('showAlert',{
+          type: 'error',
+          msg: response.data.error,
+          show: true
+        })
+      }
+    },
+    redirect(role) {
+      switch(role) {
             case this.roles[0].slug: 
-            this.$router.push('/staff')
+            this.$router.push('/'+this.roles[0].slug)
             break;
             case this.roles[1].slug: 
             this.$router.push('/sa')
             break;
             case this.roles[2].slug: 
-            this.$router.push('/purchaser')
+            this.$router.push('/'+this.roles[2].slug)
             break;
             case this.roles[3].slug: 
-            this.$router.push('/store-keeper')
+            this.$router.push('/'+this.roles[3].slug)
             break;
             case this.roles[4].slug: 
-            this.$router.push('/head')
+            this.$router.push('/'+this.roles[4].slug)
             break;
         }
-
-        this.d.type = "success"
-        this.d.msg = "Successfully Logged In"
-        this.alert = true
+    }
+  },
+  created() {
+      if(this.$store.state.login.loggedIn) {
+        this.redirect(this.$store.state.login.loggedInAs)
+        console.log("Already Logged In", this.$store.state.login)
       }
       else {
-        console.log(response.data.error)
-        this.d.type = "error"
-        this.d.msg = response.data.error
-        this.alert = true
+        console.log("New Login",this.$store.state.login)
       }
-    },
-  },
+  }
 };
 </script>
 

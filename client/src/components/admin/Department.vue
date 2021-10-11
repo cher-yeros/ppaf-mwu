@@ -191,17 +191,17 @@ export default {
 
     methods: {
       async initialize () {
-        let url = "http://localhost:3000/api/sa/get-deps"
-        let response = await axios.get(url);
+        let url = this.$hostname+"api/sa/get-deps"
+        let response = await this.$axios.get(url);
         if(response.data.success) {
           this.deps = response.data.deps
         }
       },
       async fetchEmps() {
         console.log(this.editedItem)
-        let url = "http://localhost:3000/api/sa/get-employees";
+        let url = this.$hostname+"api/sa/get-employees";
 
-        let response = await axios.get(url)
+        let response = await this.$axios.get(url)
 
         if(response.data.success) {
           this.emps = response.data.employees
@@ -228,10 +228,10 @@ export default {
         let item = this.deps.splice(this.editedIndex, 1)
 
         let id = item[0].id;
-        let url = "http://localhost:3000/api/store-keeper/delete-property";
+        let url = this.$hostname+"api/store-keeper/delete-property";
 
         console.log(id, " = to be deleted")
-        let response = await axios.delete(url,{
+        let response = await this.$axios.delete(url,{
           data : {id}
         })
 
@@ -268,8 +268,8 @@ export default {
           return
         }
 
-        let url = `http://localhost:3000/api/sa/get-deps?q=${this.search}`
-        let response = await axios.get(url);
+        let url = this.$hostname+`api/sa/get-deps?q=${this.search}`
+        let response = await this.$axios.get(url);
 
         if(response.data.success) {
           this.deps = response.data.deps
@@ -277,7 +277,7 @@ export default {
       },
       async save () {
         if(this.editedIndex === -1) {
-          let url = "http://localhost:3000/api/store-keeper/add-property";
+          let url = this.$hostname+"api/store-keeper/add-property";
 
           let d = this.editedItem;
           
@@ -285,11 +285,9 @@ export default {
           delete d.updatedAt
 
           console.log(d)
-
           return
-
           try {
-            const response = await axios.post(url,d)
+            const response = await this.$axios.post(url,d)
             if(response.data.success) {
               console.log("Success")
             }
@@ -303,7 +301,7 @@ export default {
           this.initialize()
         }
         else {
-          let url = "http://localhost:3000/api/sa/update-deps";
+          let url = this.$hostname+"api/sa/update-deps";
 
           let d = {}
           d.name = this.editedItem.name;
@@ -312,7 +310,7 @@ export default {
           d.id = this.editedItem.id;
 
           try {
-            const response = await axios.put(url,d)
+            const response = await this.$axios.put(url,d)
               if(response.data.success[0]) {
                 console.log("Success")
               }

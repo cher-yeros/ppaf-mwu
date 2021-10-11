@@ -148,9 +148,15 @@ data() {
     }
   },
   methods: {
-      logout(e) {
-          console.log("Will Logout")
-      }
+    logout() {
+      this.$store.commit('storeLogin', {
+        loggedIn : false,
+        user : {},
+        roles : [],
+      })
+
+      this.$router.push('/')
+    }
   }
 }
 </script>
