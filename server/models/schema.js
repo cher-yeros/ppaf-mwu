@@ -1,4 +1,4 @@
-const { Sequelize, DataTypes } = require('sequelize');
+const { DataTypes } = require('sequelize');
 const connection = require('../utils/dbconnection')
 
 const Property = connection.define('Property', {
@@ -344,4 +344,4 @@ module.exports.Borrow = Borrow;
 module.exports.LeaveIssue = LeaveIssue;
 module.exports.PurchaseRequest = PurchaseRequest;
 
-// connection.sync({ force: true });
+X   

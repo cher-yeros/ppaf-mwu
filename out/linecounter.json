@@ -1,0 +1,639 @@
+{
+    "extension": "linecounter",
+    "version": "0.2.7",
+    "workspace": "d:\\Node\\ppaf-mwu",
+    "linecount": [
+        {
+            "version": "0.2.7",
+            "counttime": "2022-02-01 18:21:09",
+            "filesum": 93,
+            "codesum": 61214,
+            "commentsum": 179,
+            "blanksum": 7184,
+            "statistics": {
+                ".md": {
+                    "code": 169,
+                    "comment": 11,
+                    "blank": 27
+                },
+                ".js": {
+                    "code": 1846,
+                    "comment": 15,
+                    "blank": 246
+                },
+                "": {
+                    "code": 74,
+                    "comment": 4,
+                    "blank": 16
+                },
+                ".json": {
+                    "code": 29834,
+                    "comment": 0,
+                    "blank": 11
+                },
+                ".html": {
+                    "code": 663,
+                    "comment": 5,
+                    "blank": 82
+                },
+                ".vue": {
+                    "code": 3023,
+                    "comment": 7,
+                    "blank": 462
+                },
+                ".svg": {
+                    "code": 1,
+                    "comment": 0,
+                    "blank": 0
+                },
+                ".txt": {
+                    "code": 127,
+                    "comment": 0,
+                    "blank": 3
+                },
+                ".css": {
+                    "code": 19017,
+                    "comment": 116,
+                    "blank": 6327
+                },
+                ".scss": {
+                    "code": 6430,
+                    "comment": 21,
+                    "blank": 8
+                },
+                ".map": {
+                    "code": 30,
+                    "comment": 0,
+                    "blank": 2
+                }
+            },
+            "filelist": [
+                {
+                    "blank": 6,
+                    "code": 85,
+                    "comment": 0,
+                    "filename": ".CodeCounter\\details.md"
+                },
+                {
+                    "blank": 7,
+                    "code": 44,
+                    "comment": 0,
+                    "filename": ".CodeCounter\\results.md"
+                },
+                {
+                    "blank": 3,
+                    "code": 127,
+                    "comment": 0,
+                    "filename": ".CodeCounter\\results.txt"
+                },
+                {
+                    "blank": 0,
+                    "code": 3,
+                    "comment": 0,
+                    "filename": "client\\.browserslistrc"
+                },
+                {
+                    "blank": 4,
+                    "code": 19,
+                    "comment": 0,
+                    "filename": "client\\.gitignore"
+                },
+                {
+                    "blank": 1,
+                    "code": 4,
+                    "comment": 0,
+                    "filename": "client\\babel.config.js"
+                },
+                {
+                    "blank": 8,
+                    "code": 25276,
+                    "comment": 0,
+                    "filename": "client\\package-lock.json"
+                },
+                {
+                    "blank": 0,
+                    "code": 31,
+                    "comment": 0,
+                    "filename": "client\\package.json"
+                },
+                {
+                    "filename": "client\\public\\favicon.ico",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 5,
+                    "code": 23,
+                    "comment": 5,
+                    "filename": "client\\public\\index.html"
+                },
+                {
+                    "blank": 0,
+                    "code": 2,
+                    "comment": 0,
+                    "filename": "client\\public\\MaterialDesign-Webfont-master\\.github\\ISSUE_TEMPLATE.md"
+                },
+                {
+                    "blank": 6325,
+                    "code": 19015,
+                    "comment": 114,
+                    "filename": "client\\public\\MaterialDesign-Webfont-master\\css\\materialdesignicons.css"
+                },
+                {
+                    "blank": 1,
+                    "code": 15,
+                    "comment": 0,
+                    "filename": "client\\public\\MaterialDesign-Webfont-master\\css\\materialdesignicons.css.map"
+                },
+                {
+                    "blank": 1,
+                    "code": 1,
+                    "comment": 1,
+                    "filename": "client\\public\\MaterialDesign-Webfont-master\\css\\materialdesignicons.min.css"
+                },
+                {
+                    "blank": 1,
+                    "code": 15,
+                    "comment": 0,
+                    "filename": "client\\public\\MaterialDesign-Webfont-master\\css\\materialdesignicons.min.css.map"
+                },
+                {
+                    "filename": "client\\public\\MaterialDesign-Webfont-master\\fonts\\materialdesignicons-webfont.eot",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "client\\public\\MaterialDesign-Webfont-master\\fonts\\materialdesignicons-webfont.ttf",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "client\\public\\MaterialDesign-Webfont-master\\fonts\\materialdesignicons-webfont.woff",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "client\\public\\MaterialDesign-Webfont-master\\fonts\\materialdesignicons-webfont.woff2",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 4,
+                    "code": 16,
+                    "comment": 4,
+                    "filename": "client\\public\\MaterialDesign-Webfont-master\\LICENSE"
+                },
+                {
+                    "blank": 1,
+                    "code": 27,
+                    "comment": 0,
+                    "filename": "client\\public\\MaterialDesign-Webfont-master\\package.json"
+                },
+                {
+                    "blank": 77,
+                    "code": 640,
+                    "comment": 0,
+                    "filename": "client\\public\\MaterialDesign-Webfont-master\\preview.html"
+                },
+                {
+                    "blank": 9,
+                    "code": 16,
+                    "comment": 10,
+                    "filename": "client\\public\\MaterialDesign-Webfont-master\\README.md"
+                },
+                {
+                    "blank": 2,
+                    "code": 24,
+                    "comment": 1,
+                    "filename": "client\\public\\MaterialDesign-Webfont-master\\scss\\_animated.scss"
+                },
+                {
+                    "blank": 0,
+                    "code": 10,
+                    "comment": 3,
+                    "filename": "client\\public\\MaterialDesign-Webfont-master\\scss\\_core.scss"
+                },
+                {
+                    "blank": 2,
+                    "code": 47,
+                    "comment": 16,
+                    "filename": "client\\public\\MaterialDesign-Webfont-master\\scss\\_extras.scss"
+                },
+                {
+                    "blank": 2,
+                    "code": 18,
+                    "comment": 0,
+                    "filename": "client\\public\\MaterialDesign-Webfont-master\\scss\\_functions.scss"
+                },
+                {
+                    "blank": 1,
+                    "code": 9,
+                    "comment": 0,
+                    "filename": "client\\public\\MaterialDesign-Webfont-master\\scss\\_icons.scss"
+                },
+                {
+                    "blank": 0,
+                    "code": 10,
+                    "comment": 0,
+                    "filename": "client\\public\\MaterialDesign-Webfont-master\\scss\\_path.scss"
+                },
+                {
+                    "blank": 1,
+                    "code": 6305,
+                    "comment": 0,
+                    "filename": "client\\public\\MaterialDesign-Webfont-master\\scss\\_variables.scss"
+                },
+                {
+                    "blank": 0,
+                    "code": 7,
+                    "comment": 1,
+                    "filename": "client\\public\\MaterialDesign-Webfont-master\\scss\\materialdesignicons.scss"
+                },
+                {
+                    "blank": 1,
+                    "code": 1,
+                    "comment": 1,
+                    "filename": "client\\public\\materialdesignicons.min.css"
+                },
+                {
+                    "blank": 4,
+                    "code": 15,
+                    "comment": 1,
+                    "filename": "client\\README.md"
+                },
+                {
+                    "blank": 4,
+                    "code": 20,
+                    "comment": 1,
+                    "filename": "client\\src\\App.vue"
+                },
+                {
+                    "filename": "client\\src\\assets\\logo.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "client\\src\\assets\\logo.svg"
+                },
+                {
+                    "filename": "client\\src\\assets\\mwu.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 7,
+                    "code": 92,
+                    "comment": 0,
+                    "filename": "client\\src\\components\\admin\\Admin.vue"
+                },
+                {
+                    "blank": 18,
+                    "code": 160,
+                    "comment": 0,
+                    "filename": "client\\src\\components\\admin\\AppBar.vue"
+                },
+                {
+                    "blank": 36,
+                    "code": 300,
+                    "comment": 0,
+                    "filename": "client\\src\\components\\admin\\Department.vue"
+                },
+                {
+                    "blank": 24,
+                    "code": 128,
+                    "comment": 2,
+                    "filename": "client\\src\\components\\admin\\EmpForm.vue"
+                },
+                {
+                    "blank": 27,
+                    "code": 133,
+                    "comment": 2,
+                    "filename": "client\\src\\components\\admin\\Employees.vue"
+                },
+                {
+                    "blank": 9,
+                    "code": 63,
+                    "comment": 0,
+                    "filename": "client\\src\\components\\admin\\FormProperty.vue"
+                },
+                {
+                    "blank": 6,
+                    "code": 30,
+                    "comment": 0,
+                    "filename": "client\\src\\components\\admin\\Log.vue"
+                },
+                {
+                    "blank": 5,
+                    "code": 16,
+                    "comment": 0,
+                    "filename": "client\\src\\components\\admin\\Transcation.vue"
+                },
+                {
+                    "blank": 4,
+                    "code": 65,
+                    "comment": 0,
+                    "filename": "client\\src\\components\\Alert.vue"
+                },
+                {
+                    "blank": 3,
+                    "code": 80,
+                    "comment": 1,
+                    "filename": "client\\src\\components\\HelloWorld.vue"
+                },
+                {
+                    "blank": 14,
+                    "code": 156,
+                    "comment": 0,
+                    "filename": "client\\src\\components\\Login.vue"
+                },
+                {
+                    "blank": 18,
+                    "code": 154,
+                    "comment": 0,
+                    "filename": "client\\src\\components\\purchaser\\AppBar.vue"
+                },
+                {
+                    "blank": 4,
+                    "code": 9,
+                    "comment": 0,
+                    "filename": "client\\src\\components\\purchaser\\Purchaser.vue"
+                },
+                {
+                    "blank": 65,
+                    "code": 346,
+                    "comment": 0,
+                    "filename": "client\\src\\components\\staff\\AppBar.vue"
+                },
+                {
+                    "blank": 10,
+                    "code": 29,
+                    "comment": 0,
+                    "filename": "client\\src\\components\\staff\\Borrow.vue"
+                },
+                {
+                    "blank": 10,
+                    "code": 29,
+                    "comment": 0,
+                    "filename": "client\\src\\components\\staff\\Issue.vue"
+                },
+                {
+                    "blank": 9,
+                    "code": 29,
+                    "comment": 0,
+                    "filename": "client\\src\\components\\staff\\Leave_Issue.vue"
+                },
+                {
+                    "blank": 12,
+                    "code": 87,
+                    "comment": 0,
+                    "filename": "client\\src\\components\\staff\\Show_status.vue"
+                },
+                {
+                    "blank": 4,
+                    "code": 73,
+                    "comment": 0,
+                    "filename": "client\\src\\components\\staff\\Staff.vue"
+                },
+                {
+                    "blank": 12,
+                    "code": 30,
+                    "comment": 0,
+                    "filename": "client\\src\\components\\staff\\Transfer.vue"
+                },
+                {
+                    "blank": 45,
+                    "code": 234,
+                    "comment": 1,
+                    "filename": "client\\src\\components\\storekeeper\\A&Gissue.vue"
+                },
+                {
+                    "blank": 14,
+                    "code": 61,
+                    "comment": 0,
+                    "filename": "client\\src\\components\\storekeeper\\AppBar.vue"
+                },
+                {
+                    "blank": 8,
+                    "code": 63,
+                    "comment": 0,
+                    "filename": "client\\src\\components\\storekeeper\\FormProperty.vue"
+                },
+                {
+                    "blank": 36,
+                    "code": 327,
+                    "comment": 0,
+                    "filename": "client\\src\\components\\storekeeper\\ManageP.vue"
+                },
+                {
+                    "blank": 5,
+                    "code": 16,
+                    "comment": 0,
+                    "filename": "client\\src\\components\\storekeeper\\StoreKeeper.vue"
+                },
+                {
+                    "blank": 43,
+                    "code": 238,
+                    "comment": 0,
+                    "filename": "client\\src\\components\\storekeeper\\TakeP.vue"
+                },
+                {
+                    "blank": 0,
+                    "code": 5,
+                    "comment": 0,
+                    "filename": "client\\src\\components\\storekeeper\\trial.vue"
+                },
+                {
+                    "blank": 6,
+                    "code": 33,
+                    "comment": 0,
+                    "filename": "client\\src\\components\\storekeeper\\ViewP.vue"
+                },
+                {
+                    "blank": 3,
+                    "code": 33,
+                    "comment": 0,
+                    "filename": "client\\src\\main.js"
+                },
+                {
+                    "blank": 2,
+                    "code": 8,
+                    "comment": 1,
+                    "filename": "client\\src\\plugins\\vuetify.js"
+                },
+                {
+                    "blank": 6,
+                    "code": 124,
+                    "comment": 0,
+                    "filename": "client\\src\\router\\index.js"
+                },
+                {
+                    "blank": 3,
+                    "code": 34,
+                    "comment": 0,
+                    "filename": "client\\src\\store\\index.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 6,
+                    "comment": 0,
+                    "filename": "client\\src\\views\\About.vue"
+                },
+                {
+                    "blank": 4,
+                    "code": 11,
+                    "comment": 0,
+                    "filename": "client\\src\\views\\Home.vue"
+                },
+                {
+                    "blank": 1,
+                    "code": 4,
+                    "comment": 0,
+                    "filename": "client\\vue.config.js"
+                },
+                {
+                    "blank": 4,
+                    "code": 17,
+                    "comment": 0,
+                    "filename": "LICENSE"
+                },
+                {
+                    "blank": 1,
+                    "code": 7,
+                    "comment": 0,
+                    "filename": "README.md"
+                },
+                {
+                    "blank": 4,
+                    "code": 19,
+                    "comment": 0,
+                    "filename": "server\\.gitignore"
+                },
+                {
+                    "blank": 35,
+                    "code": 360,
+                    "comment": 1,
+                    "filename": "server\\controllers\\admin-controller.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 4,
+                    "comment": 3,
+                    "filename": "server\\controllers\\head-controller.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 4,
+                    "comment": 0,
+                    "filename": "server\\controllers\\purchaser-controller.js"
+                },
+                {
+                    "blank": 20,
+                    "code": 233,
+                    "comment": 0,
+                    "filename": "server\\controllers\\staff-controller.js"
+                },
+                {
+                    "blank": 20,
+                    "code": 145,
+                    "comment": 1,
+                    "filename": "server\\controllers\\store-keeper-controller.js"
+                },
+                {
+                    "blank": 8,
+                    "code": 25,
+                    "comment": 0,
+                    "filename": "server\\index.js"
+                },
+                {
+                    "blank": 38,
+                    "code": 304,
+                    "comment": 6,
+                    "filename": "server\\models\\schema.js"
+                },
+                {
+                    "blank": 2,
+                    "code": 4473,
+                    "comment": 0,
+                    "filename": "server\\package-lock.json"
+                },
+                {
+                    "blank": 0,
+                    "code": 27,
+                    "comment": 0,
+                    "filename": "server\\package.json"
+                },
+                {
+                    "blank": 4,
+                    "code": 19,
+                    "comment": 2,
+                    "filename": "server\\routes\\admin.js"
+                },
+                {
+                    "blank": 5,
+                    "code": 57,
+                    "comment": 0,
+                    "filename": "server\\routes\\common-route.js"
+                },
+                {
+                    "blank": 5,
+                    "code": 8,
+                    "comment": 0,
+                    "filename": "server\\routes\\head.js"
+                },
+                {
+                    "blank": 4,
+                    "code": 9,
+                    "comment": 0,
+                    "filename": "server\\routes\\purchaser.js"
+                },
+                {
+                    "blank": 7,
+                    "code": 15,
+                    "comment": 1,
+                    "filename": "server\\routes\\staff.js"
+                },
+                {
+                    "blank": 6,
+                    "code": 14,
+                    "comment": 0,
+                    "filename": "server\\routes\\store-keeper.js"
+                },
+                {
+                    "blank": 47,
+                    "code": 350,
+                    "comment": 0,
+                    "filename": "server\\seeder\\eg.js"
+                },
+                {
+                    "blank": 26,
+                    "code": 82,
+                    "comment": 0,
+                    "filename": "server\\seeder\\seeder.js"
+                },
+                {
+                    "blank": 5,
+                    "code": 10,
+                    "comment": 0,
+                    "filename": "server\\utils\\dbconnection.js"
+                }
+            ]
+        }
+    ]
+}

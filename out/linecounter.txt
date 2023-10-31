@@ -1,0 +1,120 @@
+===============================================================================
+EXTENSION NAME : linecounter
+EXTENSION VERSION : 0.2.7
+-------------------------------------------------------------------------------
+count time : 2022-02-01 18:21:09
+count workspace : d:\Node\ppaf-mwu
+total files : 93
+total code lines : 61214
+total comment lines : 179
+total blank lines : 7184
+
+    statistics
+   |      extension|     total code|  total comment|    total blank|percent|
+   -------------------------------------------------------------------------
+   |            .md|            169|             11|             27|   0.28|
+   |            .js|           1846|             15|            246|    3.0|
+   |               |             74|              4|             16|   0.12|
+   |          .json|          29834|              0|             11|     49|
+   |          .html|            663|              5|             82|    1.1|
+   |           .vue|           3023|              7|            462|    4.9|
+   |           .svg|              1|              0|              0| 0.0016|
+   |           .txt|            127|              0|              3|   0.21|
+   |           .css|          19017|            116|           6327|     31|
+   |          .scss|           6430|             21|              8|     11|
+   |           .map|             30|              0|              2|  0.049|
+   -------------------------------------------------------------------------
+.CodeCounter\details.md, code is 85, comment is 0, blank is 6.
+.CodeCounter\results.md, code is 44, comment is 0, blank is 7.
+.CodeCounter\results.txt, code is 127, comment is 0, blank is 3.
+client\.browserslistrc, code is 3, comment is 0, blank is 0.
+client\.gitignore, code is 19, comment is 0, blank is 4.
+client\babel.config.js, code is 4, comment is 0, blank is 1.
+client\package-lock.json, code is 25276, comment is 0, blank is 8.
+client\package.json, code is 31, comment is 0, blank is 0.
+client\public\favicon.ico, it is a binary file.
+client\public\index.html, code is 23, comment is 5, blank is 5.
+client\public\MaterialDesign-Webfont-master\.github\ISSUE_TEMPLATE.md, code is 2, comment is 0, blank is 0.
+client\public\MaterialDesign-Webfont-master\css\materialdesignicons.css, code is 19015, comment is 114, blank is 6325.
+client\public\MaterialDesign-Webfont-master\css\materialdesignicons.css.map, code is 15, comment is 0, blank is 1.
+client\public\MaterialDesign-Webfont-master\css\materialdesignicons.min.css, code is 1, comment is 1, blank is 1.
+client\public\MaterialDesign-Webfont-master\css\materialdesignicons.min.css.map, code is 15, comment is 0, blank is 1.
+client\public\MaterialDesign-Webfont-master\fonts\materialdesignicons-webfont.eot, it is a binary file.
+client\public\MaterialDesign-Webfont-master\fonts\materialdesignicons-webfont.ttf, it is a binary file.
+client\public\MaterialDesign-Webfont-master\fonts\materialdesignicons-webfont.woff, it is a binary file.
+client\public\MaterialDesign-Webfont-master\fonts\materialdesignicons-webfont.woff2, it is a binary file.
+client\public\MaterialDesign-Webfont-master\LICENSE, code is 16, comment is 4, blank is 4.
+client\public\MaterialDesign-Webfont-master\package.json, code is 27, comment is 0, blank is 1.
+client\public\MaterialDesign-Webfont-master\preview.html, code is 640, comment is 0, blank is 77.
+client\public\MaterialDesign-Webfont-master\README.md, code is 16, comment is 10, blank is 9.
+client\public\MaterialDesign-Webfont-master\scss\_animated.scss, code is 24, comment is 1, blank is 2.
+client\public\MaterialDesign-Webfont-master\scss\_core.scss, code is 10, comment is 3, blank is 0.
+client\public\MaterialDesign-Webfont-master\scss\_extras.scss, code is 47, comment is 16, blank is 2.
+client\public\MaterialDesign-Webfont-master\scss\_functions.scss, code is 18, comment is 0, blank is 2.
+client\public\MaterialDesign-Webfont-master\scss\_icons.scss, code is 9, comment is 0, blank is 1.
+client\public\MaterialDesign-Webfont-master\scss\_path.scss, code is 10, comment is 0, blank is 0.
+client\public\MaterialDesign-Webfont-master\scss\_variables.scss, code is 6305, comment is 0, blank is 1.
+client\public\MaterialDesign-Webfont-master\scss\materialdesignicons.scss, code is 7, comment is 1, blank is 0.
+client\public\materialdesignicons.min.css, code is 1, comment is 1, blank is 1.
+client\README.md, code is 15, comment is 1, blank is 4.
+client\src\App.vue, code is 20, comment is 1, blank is 4.
+client\src\assets\logo.png, it is a binary file.
+client\src\assets\logo.svg, code is 1, comment is 0, blank is 0.
+client\src\assets\mwu.png, it is a binary file.
+client\src\components\admin\Admin.vue, code is 92, comment is 0, blank is 7.
+client\src\components\admin\AppBar.vue, code is 160, comment is 0, blank is 18.
+client\src\components\admin\Department.vue, code is 300, comment is 0, blank is 36.
+client\src\components\admin\EmpForm.vue, code is 128, comment is 2, blank is 24.
+client\src\components\admin\Employees.vue, code is 133, comment is 2, blank is 27.
+client\src\components\admin\FormProperty.vue, code is 63, comment is 0, blank is 9.
+client\src\components\admin\Log.vue, code is 30, comment is 0, blank is 6.
+client\src\components\admin\Transcation.vue, code is 16, comment is 0, blank is 5.
+client\src\components\Alert.vue, code is 65, comment is 0, blank is 4.
+client\src\components\HelloWorld.vue, code is 80, comment is 1, blank is 3.
+client\src\components\Login.vue, code is 156, comment is 0, blank is 14.
+client\src\components\purchaser\AppBar.vue, code is 154, comment is 0, blank is 18.
+client\src\components\purchaser\Purchaser.vue, code is 9, comment is 0, blank is 4.
+client\src\components\staff\AppBar.vue, code is 346, comment is 0, blank is 65.
+client\src\components\staff\Borrow.vue, code is 29, comment is 0, blank is 10.
+client\src\components\staff\Issue.vue, code is 29, comment is 0, blank is 10.
+client\src\components\staff\Leave_Issue.vue, code is 29, comment is 0, blank is 9.
+client\src\components\staff\Show_status.vue, code is 87, comment is 0, blank is 12.
+client\src\components\staff\Staff.vue, code is 73, comment is 0, blank is 4.
+client\src\components\staff\Transfer.vue, code is 30, comment is 0, blank is 12.
+client\src\components\storekeeper\A&Gissue.vue, code is 234, comment is 1, blank is 45.
+client\src\components\storekeeper\AppBar.vue, code is 61, comment is 0, blank is 14.
+client\src\components\storekeeper\FormProperty.vue, code is 63, comment is 0, blank is 8.
+client\src\components\storekeeper\ManageP.vue, code is 327, comment is 0, blank is 36.
+client\src\components\storekeeper\StoreKeeper.vue, code is 16, comment is 0, blank is 5.
+client\src\components\storekeeper\TakeP.vue, code is 238, comment is 0, blank is 43.
+client\src\components\storekeeper\trial.vue, code is 5, comment is 0, blank is 0.
+client\src\components\storekeeper\ViewP.vue, code is 33, comment is 0, blank is 6.
+client\src\main.js, code is 33, comment is 0, blank is 3.
+client\src\plugins\vuetify.js, code is 8, comment is 1, blank is 2.
+client\src\router\index.js, code is 124, comment is 0, blank is 6.
+client\src\store\index.js, code is 34, comment is 0, blank is 3.
+client\src\views\About.vue, code is 6, comment is 0, blank is 0.
+client\src\views\Home.vue, code is 11, comment is 0, blank is 4.
+client\vue.config.js, code is 4, comment is 0, blank is 1.
+LICENSE, code is 17, comment is 0, blank is 4.
+README.md, code is 7, comment is 0, blank is 1.
+server\.gitignore, code is 19, comment is 0, blank is 4.
+server\controllers\admin-controller.js, code is 360, comment is 1, blank is 35.
+server\controllers\head-controller.js, code is 4, comment is 3, blank is 0.
+server\controllers\purchaser-controller.js, code is 4, comment is 0, blank is 0.
+server\controllers\staff-controller.js, code is 233, comment is 0, blank is 20.
+server\controllers\store-keeper-controller.js, code is 145, comment is 1, blank is 20.
+server\index.js, code is 25, comment is 0, blank is 8.
+server\models\schema.js, code is 304, comment is 6, blank is 38.
+server\package-lock.json, code is 4473, comment is 0, blank is 2.
+server\package.json, code is 27, comment is 0, blank is 0.
+server\routes\admin.js, code is 19, comment is 2, blank is 4.
+server\routes\common-route.js, code is 57, comment is 0, blank is 5.
+server\routes\head.js, code is 8, comment is 0, blank is 5.
+server\routes\purchaser.js, code is 9, comment is 0, blank is 4.
+server\routes\staff.js, code is 15, comment is 1, blank is 7.
+server\routes\store-keeper.js, code is 14, comment is 0, blank is 6.
+server\seeder\eg.js, code is 350, comment is 0, blank is 47.
+server\seeder\seeder.js, code is 82, comment is 0, blank is 26.
+server\utils\dbconnection.js, code is 10, comment is 0, blank is 5.
+===============================================================================

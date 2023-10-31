@@ -27,9 +27,7 @@ app.use('/api/sa',admin);
 app.listen(3000)
 
 const port = 3000
-//const ip = '192.168.43.123'
-const ip = '10.215.30.82'
 
-//app.listen(port, ip);
+const ip = 'localhost'
 
 console.log(`Server is listening to ${ip} on port ${port}`)
